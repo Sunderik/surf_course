@@ -1,20 +1,20 @@
 # Description of your result
 
-You can describe your results in any language that is convenient for you, not just English.
+Выполнение задания ```Погружаемся в рутину```
 
 ## Description
 
-[Describe what you have done]
+В рамках задания разработана блок-схема отражающая логический поток действий для процесса ***приготовления чая***.
 
 ## How to
 
-[Describe how to run your application if there are any issues]
+Для проверки ничего не нужно запускать
 
 ## Problems
 
-[Describe the problems you encountered]
+Найти время на выполннение заданий после работы =).
 
 ## More
 
-[Here you can brag about what you managed to implement or do something beyond the task]
+Создана блок-схема для наглядности и облегчения процесса построения логики и последующей проверки.
 
