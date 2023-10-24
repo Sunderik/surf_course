@@ -1,9 +1,11 @@
-import '../../../lib.dart';
-///
+import 'package:task_283808/lib.dart';
+
+/// Объект пилота болида Формулы 1
 class Pilot extends MemberOfBrigade {
-  ///
+  /// Количество персональных побед
   int personalWindsNumber;
-  ///
+
+  /// Страна рождения
   CountryEnum birthCountry;
 
   Pilot({

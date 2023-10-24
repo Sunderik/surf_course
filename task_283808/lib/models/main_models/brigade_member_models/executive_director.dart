@@ -1,6 +1,6 @@
 import '../abstract_models/models.dart';
 
-///
+/// Объект исполнительного директора
 class ExecutiveDirector extends Director {
   ExecutiveDirector({
     required super.strategy,

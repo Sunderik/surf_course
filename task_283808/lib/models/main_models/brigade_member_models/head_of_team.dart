@@ -1,6 +1,6 @@
 import '../abstract_models/models.dart';
 
-///
+/// Объект главы бригады
 class HeadOfTeam extends Director {
   HeadOfTeam({
     required super.strategy,

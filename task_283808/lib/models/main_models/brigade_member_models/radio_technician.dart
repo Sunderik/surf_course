@@ -1,7 +1,8 @@
 import '../abstract_models/models.dart';
-///
+
+/// Объект радио-техника
 class RadioTechnician extends Technician {
-  ///
+  ///Перечень доступных радио-инструментов
   List<String>? radioTools;
 
   RadioTechnician({

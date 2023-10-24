@@ -1,11 +1,11 @@
 import 'technician.dart';
 
-///
+/// Объект работника гаража
 abstract class GarageWorker extends Technician {
-  ///
+  /// Рабочее место в гараже
   String garagePlace;
 
-  ///
+  /// Зона ответственности
   String responsibilityArea;
 
   GarageWorker({
@@ -18,5 +18,6 @@ abstract class GarageWorker extends Technician {
     required super.surname,
     required super.gender,
     required super.dateOfBirth,
+    super.tools,
   });
 }

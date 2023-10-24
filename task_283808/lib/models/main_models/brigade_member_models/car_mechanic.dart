@@ -1,8 +1,8 @@
 import '../abstract_models/models.dart';
 
-///
+/// Объект машинного механика
 class CarMechanic extends GarageWorker {
-  ///
+  /// Перечень доступных механизированных инструментов
   String? mechanizedTool;
 
   CarMechanic({

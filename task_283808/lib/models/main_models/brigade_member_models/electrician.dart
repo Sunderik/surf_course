@@ -1,8 +1,8 @@
 import '../abstract_models/models.dart';
 
-///
+/// Объект электрика
 class Electrician extends Technician {
-  ///
+  /// Перечень доступных электроинструментов
   List<String>? electricTools;
 
   Electrician({

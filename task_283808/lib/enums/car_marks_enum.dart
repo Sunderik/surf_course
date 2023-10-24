@@ -1,4 +1,5 @@
-enum CarMarksEnum{
-  gender_1,
-  gender_2,
+/// Заглушка для перечисления марок машин
+enum CarMarksEnum {
+  mark_1,
+  mark_2,
 }

@@ -1,5 +1,6 @@
 import '../abstract_models/models.dart';
-///
+
+/// Объект спортивного директора
 class SportDirector extends Director {
   SportDirector({
     required super.strategy,

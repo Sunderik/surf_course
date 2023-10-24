@@ -1,9 +1,9 @@
 import '../abstract_models/models.dart';
 
-///
+/// Объект машинного инженера
 class CarEngineer extends GarageWorker {
-  ///
-  List<String>? softwares;
+  /// Перечень доступных программных инструментов
+  List<String>? softwareTools;
 
   CarEngineer({
     required super.garagePlace,
@@ -15,6 +15,6 @@ class CarEngineer extends GarageWorker {
     required super.surname,
     required super.gender,
     required super.dateOfBirth,
-    this.softwares,
+    this.softwareTools,
   });
 }

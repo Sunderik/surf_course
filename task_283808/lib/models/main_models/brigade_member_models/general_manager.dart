@@ -1,6 +1,6 @@
 import '../abstract_models/models.dart';
 
-///
+/// Объект генерального менеджера
 class GeneralManager extends Director {
   GeneralManager({
     required super.strategy,

@@ -1,4 +1,7 @@
-enum CountryEnum{
-  country_1,
-  country_2,
+/// Перечисление стран упрощенное
+enum CountryEnum {
+  russia,
+  france,
+  germany,
+  england,
 }

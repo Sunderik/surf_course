@@ -1,8 +1,8 @@
 import '../abstract_models/models.dart';
 
-///
+/// Объект менеджера
 class Manager extends Support {
-  ///
+  /// Перечень актуальных проблем, требующих решения
   List<String> actualProblems;
 
   Manager({
