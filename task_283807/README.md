@@ -1,20 +1,19 @@
 # Description of your result
 
-You can describe your results in any language that is convenient for you, not just English.
+Выполнение задания ```Большой куш```
 
 ## Description
 
-[Describe what you have done]
+Выполнил задание согласно условиям поставленным в описании и подсказкам в коде.
 
 ## How to
 
-[Describe how to run your application if there are any issues]
+Чтобы запустить программу не из IDE, нужно в терминале перейти в директорию задания и ввести `dart run bin/main.dart`.
 
 ## Problems
 
-[Describe the problems you encountered]
+Не возникло
 
 ## More
-
-[Here you can brag about what you managed to implement or do something beyond the task]
+ 
 
