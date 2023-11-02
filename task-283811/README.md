@@ -1,23 +1,20 @@
 # Description of your result
 
-You can describe your results in any language that is convenient for you, not just English.
+Выполнение задания ```Counter v. 2.0```
 
 ## Description
 
-[Describe what you have done]
+В рамках задания доработан шаблонный проект счетчика, добавленные две переменные и кнопка уменьшения счетчика.
 
 ## How to
 
-[Describe how to run your application if there are any issues]
+Для проверки нужно в ide нужно подтянуть зависимости и запустить на любой удобной платформе.
 
 ## Problems
 
-[Describe the problems you encountered]
+Не было, либо я понял что-то не так, либо оно было слишком легкое после предыдущих с классами..
 
 ## More
 
-[Here you can brag about what you managed to implement or do something beyond the task]
-
-## Demo
-
-[Leave links to screencasts/screenshots here, you can use a GitHub repository or a separate cloud service]
+В проект добавил каталог ```examples```, в котором разместил короткое видео с презентацией работы проекта, чтобы не
+нужно было запускать код.
