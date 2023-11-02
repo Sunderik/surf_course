@@ -1,23 +1,40 @@
 # Description of your result
 
-You can describe your results in any language that is convenient for you, not just English.
+Выполнение задания ```GestureMaster```
 
 ## Description
 
-[Describe what you have done]
+В рамках задания создан интерактивный виджет с тремя интерактивными анимация и выделением при наведении мышки.
+Созданы следующие анимации:
+
+- Начатие на виджет вызывает изменение размера и смену цвета интерактивного виджета
+- Долгое нажатие на виджет вызывает вращение интерактивного виджета против часовой стрелки, пока зажата клавиша или пока
+  не истечет 1000 секунд.
+- Перетягивание виджета перемещает его в то место куда он был перетянут, в рамках интерактивной области.
+- Наведение мышкой на интераткивынй виджет, изменяет курсор и приподнимает виджет чтобы тот отбросил тень, до тех пор
+  пока мышка наведена на интерактивный виджет.
 
 ## How to
 
-[Describe how to run your application if there are any issues]
+Для проверки нужно в ide нужно подтянуть зависимости и запустить на любой удобной платформе.
 
 ## Problems
 
-[Describe the problems you encountered]
+Долго искал способ передачи контроля управления анимацией дочернего виджета его родителю. Рассматривал два варианта:
+
+- Через свойства и пересоздание виджета, при изменении состояния родителя
+  как [тут](https://docs.flutter.dev/cookbook/animation/animated-container#interactive-example).
+- Через контроллер управления анимацией
+  как [тут](https://docs.flutter.dev/ui/animations/tutorial)
+  и [тут](https://www.flutterclutter.dev/flutter/tutorials/create-a-controller-for-a-custom-widget/2021/2149/).
+
+В итоге выбрал первый вариант, но не уверен чо сделал правильно.
 
 ## More
 
-[Here you can brag about what you managed to implement or do something beyond the task]
+В рамках задания постарался деком позировать виджеты согласно SOLID, и изолировать сам интерактивный объект от прослойки
+и области анимации, тем самым постаравшись уменьшить количество пересобираемых объектов во время анимации.
 
 ## Demo
 
-[Leave links to screencasts/screenshots here, you can use a GitHub repository or a separate cloud service]
+В проект добавил каталог ```examples```, в котором разместил короткое видео с презентацией работы проекта, чтобы не нужно было запускать код.
