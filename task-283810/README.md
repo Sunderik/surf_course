@@ -1,20 +1,21 @@
 # Description of your result
 
-You can describe your results in any language that is convenient for you, not just English.
+Выполнение задания ```Магазин "Шестёрочка"```
 
 ## Description
 
-[Describe what you have done]
+Выполнены все условия задания, для упрощения кода использована библиотека по работе с коллекциями, так как в задании нет
+требований изобретать велосипед.
 
 ## How to
 
-[Describe how to run your application if there are any issues]
+Чтобы запустить программу не из IDE, нужно в терминале перейти в директорию задания и ввести `dart run bin/main.dart`.
 
 ## Problems
 
-[Describe the problems you encountered]
+Найти время на выполннение заданий после работы =).
 
 ## More
 
-[Here you can brag about what you managed to implement or do something beyond the task]
-
+Сделал по быстрому, а то и так тяну с курсом уже долго. Для упрощения кода использовал стороннюю библиотеку, так как
+запрета не было.
