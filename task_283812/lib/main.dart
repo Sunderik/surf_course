@@ -10,6 +10,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
@@ -18,7 +20,7 @@ class MainApp extends StatelessWidget {
             centerTitle: true,
             title: Text(
               'GestureMaster',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+              style: theme.textTheme.titleLarge?.copyWith(color: theme.colorScheme.onPrimary),
             ),
           ),
           body: const AnimationArea(),
