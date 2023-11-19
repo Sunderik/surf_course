@@ -1,23 +1,31 @@
 # Description of your result
 
-You can describe your results in any language that is convenient for you, not just English.
+Выполнение задания ```Визитка```
 
 ## Description
 
-[Describe what you have done]
+- Добавлены сторонние иконки в формате svg
+- Добавлен файл анимированной графики rive
+- Добавлены сторонние шрифты
+- Добавлено обычно изображение, используемое для аватарки
+- Настроена верстка и декомпозированы виджеты для удобной работы
+- Добавлены и настроены врапперы для работы с ассетами
 
 ## How to
 
-[Describe how to run your application if there are any issues]
+Для проверки нужно в ide нужно подтянуть зависимости и запустить на любой удобной платформе.
 
 ## Problems
 
-[Describe the problems you encountered]
+Самым сложным оказалось придумать интересный дизайн, который бы хоть как-то убого адаптировался и найти время на его
+реализацию.
 
 ## More
 
-[Here you can brag about what you managed to implement or do something beyond the task]
+Настроена структура проекта, виджеты максимально декомпозированы. Упрощена работа с ассетами.
+Добавлен файл анимации Rive. Верстка предоставляет минимальную адаптивность интерфейса
 
 ## Demo
 
-[Leave links to screencasts/screenshots here, you can use a GitHub repository or a separate cloud service]
+В проект добавил каталог ```result_examples```, в котором разместил короткое видео с презентацией работы проекта и
+изображения, чтобы не нужно было запускать код.
