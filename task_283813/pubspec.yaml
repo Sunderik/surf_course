@@ -11,6 +11,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  rive: ^0.12.3
+  flutter_svg: ^2.0.9
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -18,3 +21,20 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
+    - assets/rives/
+  fonts:
+    - family: Comforte
+      fonts:
+        - asset: fonts/comforte_regular.ttf
+    - family: Ganesha
+      fonts:
+        - asset: fonts/ganesha_regular.ttf
+    - family: Zarubka
+      fonts:
+        - asset: fonts/zarubka_regular.ttf
+    - family: Cimero
+      fonts:
+        - asset: fonts/cimero_regular.otf
