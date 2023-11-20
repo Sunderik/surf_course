@@ -23,7 +23,7 @@ class _SkillRatingState extends State<SkillRating> {
       children: [
         Text(
           widget.name,
-          style: FontsWrapper.cimeroTextStyle,
+          style: Theme.of(context).textTheme.cimeroContent,
         ),
         RatingString(
           value: widget.value,

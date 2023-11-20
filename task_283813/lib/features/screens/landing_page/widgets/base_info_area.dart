@@ -39,12 +39,12 @@ class _BaseInfo extends StatelessWidget {
             children: [
               Text(
                 DataWrapper.fio,
-                style: FontsWrapper.zarubkaTextStyle.copyWith(fontSize: 32, fontWeight: FontWeight.w700),
+                style: Theme.of(context).textTheme.zarubkaTitle,
               ),
-              const Text(DataWrapper.birthday, style: FontsWrapper.cimeroTextStyle),
-              const Text(DataWrapper.location, style: FontsWrapper.cimeroTextStyle),
+              Text(DataWrapper.birthday, style: Theme.of(context).textTheme.cimeroContent),
+              Text(DataWrapper.location, style: Theme.of(context).textTheme.cimeroContent),
               const SizedBox(height: 20),
-              const Text(DataWrapper.slogan, style: FontsWrapper.ganeshaTextStyle),
+              Text(DataWrapper.slogan, style: Theme.of(context).textTheme.ganeshaContent),
               const SizedBox(height: 20),
               const SkillRating(name: 'Общительность', value: 5),
               const SkillRating(name: 'Трудоспособность', value: 4),
