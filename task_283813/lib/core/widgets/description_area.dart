@@ -13,18 +13,18 @@ class DescriptionArea extends StatelessWidget {
   final SvgPicture? icon;
 
   /// Стиль текста заголовка
-  final TextStyle? titleTextStyle;
+  final TextStyle titleTextStyle;
 
   /// Стиль текста контента
-  final TextStyle? contentTextStyle;
+  final TextStyle contentTextStyle;
 
   const DescriptionArea({
     super.key,
     required this.title,
     required this.content,
+    required this.titleTextStyle,
+    required this.contentTextStyle,
     this.icon,
-    this.titleTextStyle,
-    this.contentTextStyle,
   });
 
   @override
@@ -49,8 +49,7 @@ class DescriptionArea extends StatelessWidget {
                   Flexible(
                     child: Text(
                       title,
-                      style: titleTextStyle?.copyWith(fontSize: 24, fontWeight: FontWeight.w700) ??
-                          Theme.of(context).textTheme.titleMedium,
+                      style: titleTextStyle.copyWith(fontSize: 24, fontWeight: FontWeight.w700),
                     ),
                   ),
                 ],
@@ -61,8 +60,7 @@ class DescriptionArea extends StatelessWidget {
                   Flexible(
                     child: Text(
                       content,
-                      style: contentTextStyle?.copyWith(fontSize: 18, fontWeight: FontWeight.w400) ??
-                          Theme.of(context).textTheme.bodyLarge,
+                      style: contentTextStyle.copyWith(fontSize: 18, fontWeight: FontWeight.w400),
                     ),
                   ),
                 ],
