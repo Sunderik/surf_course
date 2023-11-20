@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:task_283813/core/core.dart';
 import 'package:task_283813/features/screens/landing_page/widgets/base_info_area.dart';
 
@@ -13,6 +14,10 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
+    final meIcon = SvgPicture.asset(AssetsWrapper.mePathIsSVG, semanticsLabel: 'me');
+    final hobbyIcon = SvgPicture.asset(AssetsWrapper.hobbyPathIsSVG, semanticsLabel: 'hobby');
+    final dartIcon = SvgPicture.asset(AssetsWrapper.dartPathIsSVG, semanticsLabel: 'dart');
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -27,21 +32,21 @@ class _LandingPageState extends State<LandingPage> {
                 children: [
                   const BaseInfoArea(),
                   DescriptionArea(
-                    icon: AssetsWrapper.me,
+                    icon: meIcon,
                     title: DataWrapper.aboutMeTitle,
                     content: DataWrapper.aboutMeContent,
                     titleTextStyle: FontsWrapper.cimeroTextStyle,
                     contentTextStyle: FontsWrapper.comforteTextStyle,
                   ),
                   DescriptionArea(
-                    icon: AssetsWrapper.hobby,
+                    icon: hobbyIcon,
                     title: DataWrapper.myHobbyTitle,
                     content: DataWrapper.myHobbyContent,
                     titleTextStyle: FontsWrapper.cimeroTextStyle,
                     contentTextStyle: FontsWrapper.comforteTextStyle,
                   ),
                   DescriptionArea(
-                    icon: AssetsWrapper.dart,
+                    icon: dartIcon,
                     title: DataWrapper.experienceTitle,
                     content: DataWrapper.experienceContent,
                     titleTextStyle: FontsWrapper.cimeroTextStyle,

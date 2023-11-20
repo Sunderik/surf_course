@@ -22,6 +22,7 @@ class _AvatarState extends State<Avatar> {
   @override
   Widget build(BuildContext context) {
     final radius = BorderRadius.circular(widget.radius);
+    const avatar = AssetImage(AssetsWrapper.avatarPathIsJPG);
 
     return Material(
       elevation: 6,
@@ -32,7 +33,7 @@ class _AvatarState extends State<Avatar> {
           width: widget.maxSideSize,
           height: widget.maxSideSize,
           decoration: BoxDecoration(
-            image: const DecorationImage(image: AssetsWrapper.avatar, fit: BoxFit.cover),
+            image: const DecorationImage(image: avatar, fit: BoxFit.cover),
             borderRadius: radius,
           ),
         ),

@@ -1,24 +1,20 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rive/rive.dart';
-
 /// Обертка для работы с асетами
 class AssetsWrapper {
-  /// Изображение "автара"
-  static const AssetImage avatar = AssetImage('assets/images/avatar.jpg');
+  /// Путь к "jpg". изображению "аватара"
+  static const String avatarPathIsJPG = 'assets/images/avatar.jpg';
 
-  ///SVG изображение "куска угля"
-  static SvgPicture coal = SvgPicture.asset('assets/images/coal.svg', semanticsLabel: 'coal');
+  ///Путь к "svg", изображению "куска угля"
+  static const String coalPathIsSVG = 'assets/images/coal.svg';
 
-  ///SVG изображение "я"
-  static SvgPicture me = SvgPicture.asset('assets/images/me.svg', semanticsLabel: 'me');
+  ///Путь к "svg", изображению "я"
+  static const String mePathIsSVG = 'assets/images/me.svg';
 
-  ///SVG изображение "дротика и цели"
-  static SvgPicture dart = SvgPicture.asset('assets/images/dart.svg', semanticsLabel: 'dart');
+  ///Путь к "svg", изображению "дротика и цели"
+  static const String dartPathIsSVG = 'assets/images/dart.svg';
 
-  ///SVG изображение "хобби"
-  static SvgPicture hobby = SvgPicture.asset('assets/images/hobby.svg', semanticsLabel: 'hobby');
+  ///Путь к "svg", изображению "хобби"
+  static const String hobbyPathIsSVG = 'assets/images/hobby.svg';
 
-  ///Анимированное изображение для Rive "огонь"
-  static const RiveAnimation fire = RiveAnimation.asset('assets/rives/fire.riv');
+  ///Путь к "riv", анимированное изображение для Rive "огонь"
+  static const String firePathIsRiv = 'assets/rives/fire.riv';
 }

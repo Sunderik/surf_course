@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:rive/rive.dart';
 import 'package:task_283813/core/core.dart';
 
 /// Виджет для отображения элемента рейтинга
@@ -40,10 +42,13 @@ class _RatingWidgetState extends State<RatingWidget> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     final sideSize = widget.maxElementSideSize;
+    final coal = SvgPicture.asset(AssetsWrapper.coalPathIsSVG, semanticsLabel: 'coal');
+    const fire = RiveAnimation.asset(AssetsWrapper.firePathIsRiv);
+
     return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: sideSize, maxWidth: sideSize),
       child: widget.isActive
-          ? const Center(child: AssetsWrapper.fire)
+          ? const Center(child: fire)
           : Center(
               child: AnimatedBuilder(
                 animation: animationController,
@@ -54,8 +59,7 @@ class _RatingWidgetState extends State<RatingWidget> with TickerProviderStateMix
                   );
                 },
                 child: ConstrainedBox(
-                    constraints: BoxConstraints(maxHeight: sideSize * 0.3, maxWidth: sideSize * 0.3),
-                    child: AssetsWrapper.coal),
+                    constraints: BoxConstraints(maxHeight: sideSize * 0.3, maxWidth: sideSize * 0.3), child: coal),
               ),
             ),
     );
