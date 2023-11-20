@@ -19,17 +19,9 @@ class Avatar extends StatefulWidget {
 }
 
 class _AvatarState extends State<Avatar> {
-  /// Радиус скругления углов
-  late BorderRadius radius;
-
-  @override
-  void initState() {
-    radius = BorderRadius.circular(widget.radius);
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final radius = BorderRadius.circular(widget.radius);
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         final sideSize =
