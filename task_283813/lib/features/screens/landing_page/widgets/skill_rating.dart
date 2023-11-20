@@ -25,7 +25,7 @@ class _SkillRatingState extends State<SkillRating> {
           widget.name,
           style: FontsWrapper.cimeroTextStyle,
         ),
-        Rating(
+        RatingString(
           value: widget.value,
         ),
       ],

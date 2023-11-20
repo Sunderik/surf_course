@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:task_283813/core/core.dart';
 
 /// Виджет для отображения элемента рейтинга
-class RatingElement extends StatefulWidget {
+class RatingWidget extends StatefulWidget {
   /// Признак, состояния элемента рейтинга, активен или нет.
   final bool isActive;
 
   /// Максимальный размер элемента
   final double maxElementSideSize;
 
-  const RatingElement({super.key, this.isActive = false, this.maxElementSideSize = 50});
+  const RatingWidget({super.key, this.isActive = false, this.maxElementSideSize = 50});
 
   @override
-  State<RatingElement> createState() => _RatingElementState();
+  State<RatingWidget> createState() => _RatingWidgetState();
 }
 
-class _RatingElementState extends State<RatingElement> with TickerProviderStateMixin {
+class _RatingWidgetState extends State<RatingWidget> with TickerProviderStateMixin {
   late Animation<double> animation;
   late Tween<double> tween;
   late AnimationController animationController;
