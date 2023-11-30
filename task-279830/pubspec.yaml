@@ -10,11 +10,28 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  intl: ^0.18.1
+
+
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
 
+
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Sora
+      fonts:
+        - asset: fonts/Sora/Sora-Bold.ttf
+        - asset: fonts/Sora/Sora-ExtraBold.ttf
+        - asset: fonts/Sora/Sora-ExtraLight.ttf
+        - asset: fonts/Sora/Sora-Light.ttf
+        - asset: fonts/Sora/Sora-Medium.ttf
+        - asset: fonts/Sora/Sora-Regular.ttf
+          style: normal
+        - asset: fonts/Sora/Sora-SemiBold.ttf
+        - asset: fonts/Sora/Sora-Thin.ttf
