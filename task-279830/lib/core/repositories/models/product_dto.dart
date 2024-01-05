@@ -34,6 +34,7 @@ class ProductDTO {
     this.sale = 0,
   });
 
+  /// Конвертировать модель в сущность
   ProductEntity toEntity() {
     return ProductEntity(
         title: title, price: price, category: category, imageUrl: imageUrl, amount: amount, sale: sale);

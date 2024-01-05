@@ -10,8 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.18.1
 
+  collection: ^1.17.2 # для группировки и работы со списком
+  intl: ^0.18.1 # для форматирования даты в нормальный вид
+  cached_network_image: ^3.3.1 # для оптимизации подгрудки изображений
+  provider: ^6.1.1 # для стейт-менеджмента и архитектуры
 
 
 
@@ -24,7 +27,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
-    - family: Sora
+    - family: Sora # шрифт используемый в примере в Figma
       fonts:
         - asset: fonts/Sora/Sora-Bold.ttf
         - asset: fonts/Sora/Sora-ExtraBold.ttf

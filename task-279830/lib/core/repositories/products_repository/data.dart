@@ -1,10 +1,11 @@
 import 'package:task_279830/core/domain/domain.dart';
 import 'package:task_279830/core/repositories/models/product_dto.dart';
 
+/// Класс сырых данных предоставленных в задании
 class Data {
   /// Список продуктов.
   ///
-  /// Можете дополнить этот список самостоятельно, если хотите протестировать
+  /// (Из-задания) Можете дополнить этот список самостоятельно, если хотите протестировать
   /// приложение более объёмно.
   static final dataForStudents = <ProductDTO>[
     ProductDTO(

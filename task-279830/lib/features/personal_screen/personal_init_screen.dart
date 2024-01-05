@@ -3,6 +3,9 @@ import 'package:task_279830/core/domain/enums/pages_enum.dart';
 import 'package:task_279830/core/theme/extensions/elevated_button_extension.dart';
 import 'package:task_279830/core/theme/extensions/text_extension.dart';
 
+/// Виджет экрана с личной информация пользователя
+///
+/// В рамках приложения в нем только кнопка для перехода в чек с товарами (чтобы соответствовать дизайну в Figma)
 class PersonalInitScreen extends StatelessWidget {
   const PersonalInitScreen({super.key});
 

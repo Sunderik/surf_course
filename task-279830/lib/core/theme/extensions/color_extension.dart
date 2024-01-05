@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:task_279830/core/theme/theme_constants.dart';
+import 'package:task_279830/core/theme/color_constants.dart';
 
+/// Расширение цветовой палитры приложения
 extension CustomColorsTheme on ColorScheme {
   /// Основной цвет
   Color get customPrimaryColor {

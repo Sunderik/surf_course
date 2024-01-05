@@ -6,6 +6,7 @@ import 'package:task_279830/features/catalog_screen/catalog_screen.dart';
 import 'package:task_279830/features/personal_screen/personal_screen.dart';
 import 'package:task_279830/features/search_screen/search_screen.dart';
 
+/// Базовая обертка приложения с настройками навигации
 class App extends StatefulWidget {
   const App({super.key});
 
@@ -14,9 +15,13 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  /// Контроллер для управления перемещения через нижнее меню навигации
   final PageController controller = PageController();
 
+  /// Текущий открытый экран
   int currentIndex = 0;
+
+  /// Массив экранов доступных для перемещения через нижнее меню навигации
   final tabPages = [
     const CatalogScreen(),
     const SearchScreen(),
@@ -27,15 +32,13 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: PageView(
-        /// Wrapping the tabs with PageView
         controller: controller,
         children: tabPages,
         onPageChanged: (index) {
           setState(() {
             currentIndex = index;
-
-            /// Switching bottom tabs
           });
         },
       ),
@@ -53,8 +56,6 @@ class _AppState extends State<App> {
           currentIndex: currentIndex,
           onTap: (index) {
             controller.jumpToPage(index);
-
-            /// Switching the PageView tabs
             setState(() {
               currentIndex = index;
             });

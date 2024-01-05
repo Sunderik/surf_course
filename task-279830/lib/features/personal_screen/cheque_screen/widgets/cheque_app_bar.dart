@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:task_279830/core/theme/color_constants.dart';
 import 'package:task_279830/core/theme/extensions/text_extension.dart';
-import 'package:task_279830/core/theme/theme_constants.dart';
 
+/// Виджет AppBar для экрана чека покупок
 class ChequeAppBar extends StatelessWidget {
+  /// Номер чека
   final int chequeNumber;
+
+  /// Дата формирования чека
   final DateTime createdDate;
 
   const ChequeAppBar({super.key, required this.chequeNumber, required this.createdDate});
@@ -20,17 +24,21 @@ class ChequeAppBar extends StatelessWidget {
         ),
         onPressed: () => Navigator.of(context).pop(),
       ),
-      title: ChequeAppBarTitle(chequeNumber: chequeNumber, createdDate: createdDate),
+      title: _ChequeAppBarTitle(chequeNumber: chequeNumber, createdDate: createdDate),
       automaticallyImplyLeading: true,
     );
   }
 }
 
-class ChequeAppBarTitle extends StatelessWidget {
+/// Виджет заголовка  в AppBar для экрана чека покупок
+class _ChequeAppBarTitle extends StatelessWidget {
+  /// Номер чека
   final int chequeNumber;
+
+  /// Дата формирования чека
   final DateTime createdDate;
 
-  const ChequeAppBarTitle({super.key, required this.chequeNumber, required this.createdDate});
+  const _ChequeAppBarTitle({required this.chequeNumber, required this.createdDate});
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +50,11 @@ class ChequeAppBarTitle extends StatelessWidget {
       children: [
         Text(
           'Чек №$chequeNumber',
-          style: textTheme.customTitleBold,
+          style: textTheme.customTitleBoldDark,
         ),
         Text(
           formattedDate,
-          style: textTheme.customCaption,
+          style: textTheme.customCaptionDark,
         ),
       ],
     );

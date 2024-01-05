@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:task_279830/core/theme/extensions/text_extension.dart';
 
+/// Базовое сообщение экрана
 const String _demoMessage = 'Здесь пока ничего нет';
 
+/// Виджет экрана без логики
 class DemoScreen extends StatelessWidget {
   final String title;
 
@@ -18,7 +20,7 @@ class DemoScreen extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: Text(_demoMessage, style: Theme.of(context).textTheme.customSubtitle),
+        child: Text(_demoMessage, style: Theme.of(context).textTheme.customSubtitleDark),
       ),
     );
   }
