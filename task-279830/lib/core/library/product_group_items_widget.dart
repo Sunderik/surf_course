@@ -21,11 +21,11 @@ class ProductGroupItemsWidget extends StatelessWidget {
     ScrollController scrollController = ScrollController();
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 4.0),
+            padding: const EdgeInsets.only(bottom: 4),
             child: Row(
               children: [
                 Text(

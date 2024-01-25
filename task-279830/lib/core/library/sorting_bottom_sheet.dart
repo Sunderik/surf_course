@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_279830/core/domain/enums/sorting_types_enum.dart';
+import 'package:task_279830/core/domain/objects/sorting_type.dart';
 import 'package:task_279830/core/theme/color_constants.dart';
 import 'package:task_279830/core/theme/extensions/elevated_button_extension.dart';
 import 'package:task_279830/core/theme/extensions/text_extension.dart';
@@ -8,10 +8,10 @@ import 'package:task_279830/core/theme/extensions/text_extension.dart';
 const String _title = 'Сортировка';
 
 /// Функция используемая вне модального окна при смене типа сортировки
-typedef CustomSortingTypeAction = void Function(SortingTypesEnum type);
+typedef CustomSortingTypeAction = void Function(SortingType type);
 
 /// Функция смены типа сортировки для локального использования в рамках модельного окна
-typedef _SetSortingTypeAction = void Function(SortingTypesEnum? type);
+typedef _SetSortingTypeAction = void Function(SortingType? type);
 
 /// Модельное окно выбора типа сортировки
 class SortingBottomSheet {
@@ -19,7 +19,7 @@ class SortingBottomSheet {
   final BuildContext context;
 
   /// Тип сортировки который выбран при открытии модального окна
-  final SortingTypesEnum initSortingType;
+  final SortingType initSortingType;
 
   /// Функция выполняемая при смене типа сортировки
   final CustomSortingTypeAction changeSortingTypeAction;
@@ -50,7 +50,7 @@ class SortingBottomSheet {
 class _BottomSheetContent extends StatefulWidget {
   /// Функция выполняемая при смене типа сортировки
   final CustomSortingTypeAction changeSortingTypeAction;
-  final SortingTypesEnum initSortingType;
+  final SortingType initSortingType;
 
   const _BottomSheetContent({required this.changeSortingTypeAction, required this.initSortingType});
 
@@ -61,7 +61,7 @@ class _BottomSheetContent extends StatefulWidget {
 /// Состояния виджета содержимого модального окна
 class _BottomSheetContentState extends State<_BottomSheetContent> {
   /// Локально выбранный тип сортировки, до его сохранения
-  late SortingTypesEnum _localSelectedType;
+  late SortingType _localSelectedType;
 
   @override
   void initState() {
@@ -73,7 +73,7 @@ class _BottomSheetContentState extends State<_BottomSheetContent> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -95,7 +95,7 @@ class _BottomSheetContentState extends State<_BottomSheetContent> {
           ),
           const SizedBox(height: 16),
           _BottomSheetRadioButton(
-            sortingType: SortingTypesEnum.none,
+            sortingType: WithoutSorting(),
             groupValue: _localSelectedType,
             setValueAction: _setTypeValue,
           ),
@@ -105,7 +105,7 @@ class _BottomSheetContentState extends State<_BottomSheetContent> {
           ),
           _BottomSheetGroupRadioButtons(
             groupName: 'По имени',
-            sortingTypes: const [SortingTypesEnum.byName, SortingTypesEnum.byNameRevers],
+            sortingTypes: const [SortingByName(), SortingByName(isReversed: true)],
             groupValue: _localSelectedType,
             setValueAction: _setTypeValue,
           ),
@@ -115,7 +115,7 @@ class _BottomSheetContentState extends State<_BottomSheetContent> {
           ),
           _BottomSheetGroupRadioButtons(
             groupName: 'По цене',
-            sortingTypes: const [SortingTypesEnum.byCost, SortingTypesEnum.byCostRevers],
+            sortingTypes: const [SortingByCost(), SortingByCost(isReversed: true)],
             groupValue: _localSelectedType,
             setValueAction: _setTypeValue,
           ),
@@ -125,7 +125,7 @@ class _BottomSheetContentState extends State<_BottomSheetContent> {
           ),
           _BottomSheetGroupRadioButtons(
             groupName: 'По типу',
-            sortingTypes: const [SortingTypesEnum.byType, SortingTypesEnum.byTypeRevers],
+            sortingTypes: const [SortingByType(), SortingByType(isReversed: true)],
             groupValue: _localSelectedType,
             setValueAction: _setTypeValue,
           ),
@@ -147,7 +147,7 @@ class _BottomSheetContentState extends State<_BottomSheetContent> {
   }
 
   /// Функция изменения состояния модельного окна  при локальном изменении типа сортировки
-  void _setTypeValue(SortingTypesEnum? type) {
+  void _setTypeValue(SortingType? type) {
     if (type != null) {
       setState(() {
         _localSelectedType = type;
@@ -162,10 +162,10 @@ class _BottomSheetGroupRadioButtons extends StatelessWidget {
   final String groupName;
 
   /// Типы сортировок входящих в группу
-  final List<SortingTypesEnum> sortingTypes;
+  final List<SortingType> sortingTypes;
 
   /// Групповое значение объединяющее все радиокнопки в модальном окне
-  final SortingTypesEnum groupValue;
+  final SortingType groupValue;
 
   /// Функция смены типа сортировки при нажатии на радиокнопку
   final _SetSortingTypeAction setValueAction;
@@ -207,10 +207,10 @@ class _BottomSheetGroupRadioButtons extends StatelessWidget {
 /// Виджет радио-кнопки для типа сортировки
 class _BottomSheetRadioButton extends StatelessWidget {
   /// Тип сортировки для которого создается кнопка
-  final SortingTypesEnum sortingType;
+  final SortingType sortingType;
 
   /// Групповое значение объединяющее все радиокнопки в модальном окне
-  final SortingTypesEnum groupValue;
+  final SortingType groupValue;
 
   /// Функция смены типа сортировки при нажатии на радиокнопку
   final _SetSortingTypeAction? setValueAction;
@@ -223,7 +223,7 @@ class _BottomSheetRadioButton extends StatelessWidget {
 
     return Material(
       type: MaterialType.transparency,
-      child: RadioListTile<SortingTypesEnum>(
+      child: RadioListTile<SortingType>(
         activeColor: customGreen,
         hoverColor: Colors.transparent,
         overlayColor: MaterialStateProperty.resolveWith<Color>((states) => Colors.transparent),

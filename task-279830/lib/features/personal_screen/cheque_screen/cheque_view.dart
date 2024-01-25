@@ -30,7 +30,7 @@ class _ChequeViewState extends State<ChequeView> {
         ),
       ),
       body: const Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(20),
         child: Center(
           child: Column(
             children: [

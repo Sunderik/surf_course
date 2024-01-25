@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task_279830/core/domain/enums/sorting_types_enum.dart';
+import 'package:task_279830/core/domain/objects/sorting_type.dart';
 import 'package:task_279830/core/library/sorting_bottom_sheet.dart';
 import 'package:task_279830/core/theme/color_constants.dart';
 import 'package:task_279830/core/theme/extensions/text_extension.dart';
@@ -28,7 +28,7 @@ class _ChequeProductsListHeaderState extends State<ChequeProductsListHeader> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(_title, style: Theme.of(context).textTheme.customTitleBoldDark),
-        StreamBuilder<SortingTypesEnum>(
+        StreamBuilder<SortingType>(
             stream: bloc.selectedSortingTypeStream,
             builder: (context, snapshot) {
               return _FilterButton(sortingIsUsed: bloc.sortingIsUsed);
@@ -75,7 +75,7 @@ class _FilterButton extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 5.0),
+                    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 5),
                     child: SizedBox(
                       width: 8,
                       height: 8,
