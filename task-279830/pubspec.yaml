@@ -11,10 +11,30 @@ dependencies:
   flutter:
     sdk: flutter
 
+  collection: ^1.17.2 # для группировки и работы со списком
+  intl: ^0.18.1 # для форматирования даты в нормальный вид
+  cached_network_image: ^3.3.1 # для оптимизации подгрудки изображений
+  provider: ^6.1.1 # для стейт-менеджмента и архитектуры
+  equatable: ^2.0.5
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
 
+
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Sora # шрифт используемый в примере в Figma
+      fonts:
+        - asset: fonts/Sora/Sora-Bold.ttf
+        - asset: fonts/Sora/Sora-ExtraBold.ttf
+        - asset: fonts/Sora/Sora-ExtraLight.ttf
+        - asset: fonts/Sora/Sora-Light.ttf
+        - asset: fonts/Sora/Sora-Medium.ttf
+        - asset: fonts/Sora/Sora-Regular.ttf
+          style: normal
+        - asset: fonts/Sora/Sora-SemiBold.ttf
+        - asset: fonts/Sora/Sora-Thin.ttf
