@@ -1,18 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:task_280049/core/core.dart';
-import 'package:task_280049/core/logic/mixins/buffer_mixin.dart';
 import 'package:task_280049/core/logic/objects/objects.dart';
 import 'package:task_280049/features/color_details_screen/color_details_screen.dart';
 
-class ColorsScreenWidgetModel extends BaseWidgetModel with BufferMixin {
-  late ColorsStateModel state;
+class ColorsScreenWidgetModel extends BaseWidgetModel {
+  late final ColorsStateModel _state;
 
-  ColorsScreenWidgetModel({required this.state});
+  ColorsScreenWidgetModel({required ColorsStateModel state}) : _state = state;
 
-  late ScreenStatusesEnum screenStatus;
+  ///
   late List<ColorEntity> colors;
 
   ///
@@ -22,72 +20,68 @@ class ColorsScreenWidgetModel extends BaseWidgetModel with BufferMixin {
   Stream<List<ColorEntity>> get colorsStream => _colorsController.stream;
 
   ///
-  late StreamController<ScreenStatusesEnum> _screenStatusController;
-
-  ///
-  Stream<ScreenStatusesEnum> get screenStatusStream => _screenStatusController.stream;
-
-  ///
   List<ColorEntity> get _colorsSelector =>
-      state.colors.where((color) => color.value != null && color.value!.isNotEmpty).toList();
+      _state.colors.where((color) => color.value != null && color.value!.isNotEmpty).toList();
+
+  ColorEntity? get colorInClipboard => _state.colorInClipboard;
 
   @override
   void init() {
     super.init();
-    state.addListener(_colorsListener);
+    _state.addListener(_stateListener);
     colors = [];
     _colorsController = StreamController<List<ColorEntity>>.broadcast();
-    _screenStatusController = StreamController<ScreenStatusesEnum>.broadcast();
-    _setScreenStatus(ScreenStatusesEnum.init);
+
+    setScreenStatus(ScreenStatusesEnum.init);
+
     _checkColors();
   }
 
   @override
   void dispose() {
     super.dispose();
-    state.removeListener(_colorsListener);
+    _state.removeListener(_stateListener);
     _colorsController.close();
-    _screenStatusController.close();
+  }
+
+  @override
+  void copyColorToClipboard(BuildContext context, ColorEntity color) {
+    super.copyColorToClipboard(context, color);
+    _state.setColorInClipboard(color);
   }
 
   void navigateToColorPage(BuildContext context, ColorEntity color) {
-    state.selectedColor = color;
     Navigator.of(context).push(
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => Provider<ColorsStateModel>(
-            create: (ctx) => state, dispose: (ctx, wm) => wm.dispose(), child: const ColorDetailsScreen()),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => SlideTransition(
-          position: Tween<Offset>(
-            begin: const Offset(1, 0),
-            end: Offset.zero,
-          ).animate(animation),
+        pageBuilder: (context, animation, secondaryAnimation) => ColorDetailsScreen(color: color),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
+          opacity: animation,
           child: child,
         ),
       ),
     );
   }
 
-  void copyColorToBuffer(BuildContext context, ColorEntity color) {
-    copyToBuffer(context, text: color.value ?? '', message: 'Hex скопирован');
-  }
-
-  void _checkColors() {
+  Future<void> _checkColors() async {
     if (_colorsSelector.isEmpty) {
-      _setScreenStatus(ScreenStatusesEnum.loading);
-      state.fetchColors();
+      setScreenStatus(ScreenStatusesEnum.loading);
+      await _state.fetchColors();
     } else {
-      _colorsListener();
+      _stateListener();
+    }
+    final hexInClipboard = await getColorInClipboard();
+    if (colors.isNotEmpty && hexInClipboard.isNotEmpty) {
+      setHexInClipboard(colors.firstWhere((color) => color.value == hexInClipboard));
     }
   }
 
-  void _colorsListener() {
+  void _stateListener() {
     colors = _colorsSelector;
     _colorsController.sink.add(colors);
-    _setScreenStatus(ScreenStatusesEnum.wait);
-  }
-
-  void _setScreenStatus(ScreenStatusesEnum status) {
-    screenStatus = status;
-    _screenStatusController.sink.add(status);
+    hexInClipboard = _state.colorInClipboard;
+    if (hexInClipboard != null) {
+      hexInClipboardController.sink.add(hexInClipboard!);
+    }
+    setScreenStatus(ScreenStatusesEnum.wait);
   }
 }

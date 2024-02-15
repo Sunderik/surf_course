@@ -11,9 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  animations: ^2.0.8
   provider: ^6.0.2
-  get_it: ^7.6.7 # Для DI
-  injectable: ^2.1.1 #DI annotations
   json_annotation: ^4.8.1
 
 dev_dependencies:

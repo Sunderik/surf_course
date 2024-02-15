@@ -10,8 +10,8 @@ class ColorsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ColorsStateModel>(builder: (context, colorState, child) {
-      return ProxyProvider0<ColorsScreenWidgetModel>(
-        update: (_, __) => ColorsScreenWidgetModel(state: colorState)..init(),
+      return Provider<ColorsScreenWidgetModel>(
+        create: (ctx) => ColorsScreenWidgetModel(state: colorState)..init(),
         dispose: (ctx, wm) => wm.dispose(),
         child: const ColorsScreenView(),
       );

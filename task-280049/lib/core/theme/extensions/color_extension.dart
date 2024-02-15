@@ -7,4 +7,14 @@ extension CustomColorsTheme on ColorScheme {
   Color get customOpacity {
     return customForOpacity.withOpacity(0.8);
   }
+
+  /// Цвет с прозрачностью для тени
+  Color get customShadow {
+    return customForShadow.withOpacity(0.08);
+  }
+
+  /// Цвет с прозрачностью для иконок
+  Color get customIcons {
+    return customForIcons;
+  }
 }

@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:task_280049/core/logic/mixins/system_bar_color_mixin.dart';
 import 'package:task_280049/core/theme/extensions/text_extension.dart';
 
 const String _appBarTitle = 'Эксклюзивная палитра «Colored Box»';
 const Size _appBarHeight = Size.fromHeight(164);
 
-class ColorsScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
+class ColorsScreenAppBar extends StatelessWidget with SystemBarColorMixin implements PreferredSizeWidget {
   const ColorsScreenAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    setSystemBarColor(Theme.of(context).colorScheme.background);
+
     return PreferredSize(
       preferredSize: _appBarHeight,
       child: Column(
@@ -38,6 +41,5 @@ class ColorsScreenAppBar extends StatelessWidget implements PreferredSizeWidget 
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => _appBarHeight;
 }

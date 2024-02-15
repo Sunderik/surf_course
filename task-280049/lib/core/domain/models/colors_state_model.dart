@@ -14,15 +14,23 @@ class ColorsStateModel extends ChangeNotifier {
   /// Список используемых цветов
   final List<ColorEntity> _colors = [];
 
+  ///
+  ColorEntity? _colorInClipboard;
+
   /// Цвета
   UnmodifiableListView<ColorEntity> get colors => UnmodifiableListView(_colors);
 
-  ///
-  ColorEntity? selectedColor;
+  /// Цвета
+  ColorEntity? get colorInClipboard => _colorInClipboard;
 
   Future<void> fetchColors() async {
     final colors = await _useCases.fetchColors();
     _setColors(colors);
+  }
+
+  Future<void> setColorInClipboard(ColorEntity color) async {
+    _colorInClipboard = color;
+    notifyListeners();
   }
 
   void _setColors(List<ColorEntity> colors) {

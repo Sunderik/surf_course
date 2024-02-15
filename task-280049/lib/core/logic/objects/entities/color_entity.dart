@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:task_280049/core/logic/objects/dtos/color_dto.dart';
 
 class ColorEntity {
@@ -11,4 +12,12 @@ class ColorEntity {
         value = dto.value;
 
   ColorDto toDto() => ColorDto(name, value);
+
+  Color getColor() {
+    if (value != null && value!.isNotEmpty) {
+      return Color(int.parse('0xff${value!.substring(1)}'));
+    } else {
+      return Colors.transparent;
+    }
+  }
 }
