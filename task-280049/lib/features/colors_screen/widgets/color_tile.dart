@@ -54,7 +54,7 @@ class ColorTile extends StatelessWidget {
                 Row(
                   children: [
                     Text(color.value ?? '', style: theme.textTheme.customCaption),
-                    StreamBuilder<ColorEntity>(
+                    StreamBuilder<ColorEntity?>(
                         stream: widgetModel.hexInClipboardStream,
                         builder: (context, snapshot) {
                           final isCopied = widgetModel.hexInClipboard == color;

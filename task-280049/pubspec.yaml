@@ -11,9 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  animations: ^2.0.8
   provider: ^6.0.2
   json_annotation: ^4.8.1
+  collection: ^1.15.0 # The package contains functions that operate on lists.
+
 
 dev_dependencies:
   flutter_test:

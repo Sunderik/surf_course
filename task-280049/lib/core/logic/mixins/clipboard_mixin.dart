@@ -11,16 +11,19 @@ mixin ClipboardMixin {
     }
   }
 
-  Future<void> copyToClipboard(BuildContext context, {required String text, required String message}) async {
+  Future<void> copyToClipboard(BuildContext context, {required String text, String? message}) async {
     await Clipboard.setData(ClipboardData(text: text));
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(message),
-        ],
-      ),
-    ));
+
+    if (message != null && message.isNotEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(message),
+          ],
+        ),
+      ));
+    }
   }
 }

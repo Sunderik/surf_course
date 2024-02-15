@@ -28,7 +28,7 @@ class ColorsStateModel extends ChangeNotifier {
     _setColors(colors);
   }
 
-  Future<void> setColorInClipboard(ColorEntity color) async {
+  Future<void> setColorInClipboard(ColorEntity? color) async {
     _colorInClipboard = color;
     notifyListeners();
   }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:task_280049/core/core.dart';
 import 'package:task_280049/core/logic/objects/objects.dart';
@@ -71,7 +72,10 @@ class ColorsScreenWidgetModel extends BaseWidgetModel {
     }
     final hexInClipboard = await getColorInClipboard();
     if (colors.isNotEmpty && hexInClipboard.isNotEmpty) {
-      setHexInClipboard(colors.firstWhere((color) => color.value == hexInClipboard));
+      final color = colors.firstWhereOrNull((color) => color.value == hexInClipboard);
+      if (color != null) {
+        setHexInClipboard(color);
+      }
     }
   }
 

@@ -105,25 +105,106 @@ class ColorDataWidget extends StatelessWidget {
                             color.value!.substring(1),
                             style: theme.textTheme.customText,
                           ),
-                          StreamBuilder<ColorEntity>(
-                              stream: widgetModel.hexInClipboardStream,
-                              builder: (context, snapshot) {
-                                final isCopied = widgetModel.hexInClipboard == color;
-                                if (isCopied) {
-                                  return Icon(
-                                    Icons.copy_sharp,
-                                    color: theme.colorScheme.customIcons,
-                                    size: 14,
-                                  );
-                                } else {
-                                  return const SizedBox();
-                                }
-                              }),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8),
+                            child: StreamBuilder<ColorEntity?>(
+                                stream: widgetModel.hexInClipboardStream,
+                                builder: (context, snapshot) {
+                                  final isCopied = widgetModel.hexInClipboard == color;
+                                  if (isCopied) {
+                                    return Icon(
+                                      Icons.copy_sharp,
+                                      color: theme.colorScheme.customIcons,
+                                      size: 14,
+                                    );
+                                  } else {
+                                    return const SizedBox();
+                                  }
+                                }),
+                          ),
                         ],
                       ),
                     ],
                   ),
                 ),
+              ),
+            ),
+          if (color.value != null && color.value!.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onLongPress: () => widgetModel.copyChannelToClipboard(context, color.getColor().red),
+                    child: NeomorphDataContainer(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Red',
+                            style: theme.textTheme.customText,
+                          ),
+                          const SizedBox(width: 20),
+                          Row(
+                            children: [
+                              Text(
+                                color.getColor().red.toString(),
+                                style: theme.textTheme.customText,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onLongPress: () => widgetModel.copyChannelToClipboard(context, color.getColor().green),
+                    child: NeomorphDataContainer(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Green',
+                            style: theme.textTheme.customText,
+                          ),
+                          const SizedBox(width: 20),
+                          Row(
+                            children: [
+                              Text(
+                                color.getColor().green.toString(),
+                                style: theme.textTheme.customText,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onLongPress: () => widgetModel.copyChannelToClipboard(context, color.getColor().blue),
+                    child: NeomorphDataContainer(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Blue',
+                            style: theme.textTheme.customText,
+                          ),
+                          const SizedBox(width: 20),
+                          Row(
+                            children: [
+                              Text(
+                                color.getColor().blue.toString(),
+                                style: theme.textTheme.customText,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
         ],

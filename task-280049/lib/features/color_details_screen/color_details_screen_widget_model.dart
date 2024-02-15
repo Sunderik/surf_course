@@ -43,6 +43,11 @@ class ColorDetailsScreenWidgetModel extends BaseWidgetModel with SystemBarColorM
     _state.setColorInClipboard(color);
   }
 
+  void copyChannelToClipboard(BuildContext context, int channel) {
+    copyToClipboard(context, text: channel.toString());
+    _state.setColorInClipboard(ColorEntity('', ''));
+  }
+
   ///
   bool backNavigation(BuildContext context) {
     Navigator.of(context).pop();
