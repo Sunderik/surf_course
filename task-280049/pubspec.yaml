@@ -11,10 +11,33 @@ dependencies:
   flutter:
     sdk: flutter
 
+  provider: ^6.0.2
+  get_it: ^7.6.7 # Для DI
+  injectable: ^2.1.1 #DI annotations
+  json_annotation: ^4.8.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
 
+  build_runner: ^2.4.8
+  injectable_generator: ^2.1.5
+  json_serializable: ^6.7.1
+
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
+  fonts:
+    - family: Ubuntu # шрифт используемый в примере в Figma
+      fonts:
+        - asset: fonts/Ubuntu/Ubuntu-Bold.ttf
+        - asset: fonts/Ubuntu/Ubuntu-BoldItalic.ttf
+        - asset: fonts/Ubuntu/Ubuntu-Italic.ttf
+        - asset: fonts/Ubuntu/Ubuntu-Light.ttf
+        - asset: fonts/Ubuntu/Ubuntu-LightItalic.ttf
+        - asset: fonts/Ubuntu/Ubuntu-Medium.ttf
+        - asset: fonts/Ubuntu/Ubuntu-MediumItalic.ttf
+        - asset: fonts/Ubuntu/Ubuntu-Regular.ttf
+          style: normal
