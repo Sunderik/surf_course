@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:task_280049/core/logic/mixins/system_bar_color_mixin.dart';
 import 'package:task_280049/core/theme/extensions/text_extension.dart';
 
+/// Текст заголовка окна
 const String _appBarTitle = 'Эксклюзивная палитра «Colored Box»';
+
+/// Размер высоты заголовка окна
 const Size _appBarHeight = Size.fromHeight(164);
 
+/// Виджет заголовка  окна палитры цветов
 class ColorsScreenAppBar extends StatelessWidget with SystemBarColorMixin implements PreferredSizeWidget {
+  /// Заголовка окна палитры цветов
   const ColorsScreenAppBar({super.key});
 
   @override

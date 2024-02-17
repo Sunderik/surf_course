@@ -6,7 +6,9 @@ import 'package:task_280049/features/colors_screen/colors_screen_widget_model.da
 import 'package:task_280049/features/colors_screen/widgets/colors_grid.dart';
 import 'package:task_280049/features/colors_screen/widgets/colors_screen_app_bar.dart';
 
+/// Виджет экрана палитры цветов
 class ColorsScreenView extends StatelessWidget {
+  /// Экран палитры цветов
   const ColorsScreenView({super.key});
 
   @override
@@ -34,6 +36,7 @@ class ColorsScreenView extends StatelessWidget {
                     return ColorsGrid(colors: colors);
                   });
             } else {
+              // Тут можно бахнуть экран ошибки
               return const Center(
                 child: Text('OOPss'),
               );

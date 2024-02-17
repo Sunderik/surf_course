@@ -11,24 +11,27 @@ dependencies:
   flutter:
     sdk: flutter
 
-  provider: ^6.0.2
-  json_annotation: ^4.8.1
-  collection: ^1.15.0 # The package contains functions that operate on lists.
+  provider: ^6.0.2 # Пакет для создания архитектуры и сервис-сервис локатор
 
+  get_it: ^7.6.7 # Пакет построения DI для уменьшения связности слоев архитектуры
+  injectable: ^2.3.2 # Пакет кодогенерации DI по аннотациям (сделал и забыл)
+
+  json_annotation: ^4.8.1 # Пакет для упрощения работы с DTO моделями
+  collection: ^1.15.0 # Пакет расширения возможностей работы со списками
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
 
-  build_runner: ^2.4.8
-  injectable_generator: ^2.1.5
-  json_serializable: ^6.7.1
+  build_runner: ^2.4.8 # Позволяет запускать кодогенерацию
+  injectable_generator: ^2.1.5 # Генерирует по аннотациям DI приложения
+  json_serializable: ^6.7.1 # Генерирует по описанию класса код для его сериализации и дессериализации
 
 flutter:
   uses-material-design: true
   assets:
-    - assets/
+    - assets/colors.json # Путь к файлу данных карты цветов.
   fonts:
     - family: Ubuntu # шрифт используемый в примере в Figma
       fonts:

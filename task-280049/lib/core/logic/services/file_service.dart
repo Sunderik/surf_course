@@ -1,10 +1,13 @@
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
+/// Интерфейс сервиса по работе с файлами
 abstract class IFileService {
+  /// Загрузить данные json файла из ассетов приложения, где [path] путь к файлу.
   Future<String> loadJsonFileFromAssets(String path);
 }
 
+///  Реализация интерфейса сервиса по работе с файлами
 @Injectable(as: IFileService)
 class FileServiceImpl implements IFileService {
   @override

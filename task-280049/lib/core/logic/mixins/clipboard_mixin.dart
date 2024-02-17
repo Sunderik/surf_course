@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// Миксин по работе с системным буфером из WidgetModel
 mixin ClipboardMixin {
+  /// Получить текущий цвет из буфера обмена
+  /// Возвращается   цвет в формате Hex, либо пустая строка, если буфер обмена пуст
   Future<String> getColorInClipboard() async {
     final data = (await Clipboard.getData(Clipboard.kTextPlain))?.text;
     if (data == null || data.isEmpty) {
@@ -11,19 +13,8 @@ mixin ClipboardMixin {
     }
   }
 
-  Future<void> copyToClipboard(BuildContext context, {required String text, String? message}) async {
-    await Clipboard.setData(ClipboardData(text: text));
-
-    if (message != null && message.isNotEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(message),
-          ],
-        ),
-      ));
-    }
+  /// Записать текущий цвет в буфер обмена в формате Hex
+  Future<void> copyToClipboard({required String text}) async {
+    return Clipboard.setData(ClipboardData(text: text));
   }
 }

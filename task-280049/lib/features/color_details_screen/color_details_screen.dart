@@ -5,9 +5,12 @@ import 'package:task_280049/core/logic/objects/entities/color_entity.dart';
 import 'package:task_280049/features/color_details_screen/color_details_screen_view.dart';
 import 'package:task_280049/features/color_details_screen/color_details_screen_widget_model.dart';
 
+/// Виджет окна информации о цвете
 class ColorDetailsScreen extends StatelessWidget {
+  /// Цвет для отображения в окне
   final ColorEntity color;
 
+  /// Окно информации о цвете
   const ColorDetailsScreen({required this.color, super.key});
 
   @override

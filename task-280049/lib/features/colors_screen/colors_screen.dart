@@ -4,7 +4,9 @@ import 'package:task_280049/core/core.dart';
 import 'package:task_280049/features/colors_screen/colors_screen_view.dart';
 import 'package:task_280049/features/colors_screen/colors_screen_widget_model.dart';
 
+/// Виджет экрана палитры доступных цветов
 class ColorsScreen extends StatelessWidget {
+  /// Экран палитры доступных цветов
   const ColorsScreen({super.key});
 
   @override

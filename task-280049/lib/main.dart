@@ -5,12 +5,14 @@ import 'package:task_280049/core/logic/keys/keys.dart';
 
 import 'features/colors_screen/colors_screen.dart';
 
+/// Точка входа в приложение
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  /// Построение DI
+  /// Построение DI приложения
   configureInjection();
 
+  /// Запуск приложения (настраиваем главный стейт приложения поверх всего дерева виджетов)
   runApp(
     ChangeNotifierProvider(
       create: (context) => injector.get<ColorsStateModel>(),
@@ -19,6 +21,7 @@ Future<void> main() async {
   );
 }
 
+/// Базовый виджет приложения
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
@@ -26,9 +29,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: AppNavigatorKey.stateKey,
-      scaffoldMessengerKey: AppNavigatorKey.messengerKey,
       debugShowCheckedModeBanner: false,
-      theme: baseTheme(context),
+      theme: baseTheme,
       home: const ColorsScreen(),
     );
   }

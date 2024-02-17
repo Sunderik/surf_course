@@ -1,29 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_280049/core/library/widgets/copied_icon.dart';
 import 'package:task_280049/core/logic/objects/entities/color_entity.dart';
-import 'package:task_280049/core/theme/extensions/color_extension.dart';
 import 'package:task_280049/core/theme/extensions/text_extension.dart';
 import 'package:task_280049/features/colors_screen/colors_screen_widget_model.dart';
 
+/// Виджет плитки цвета
 class ColorTile extends StatelessWidget {
+  /// Цвет для отображения в плитке
   final ColorEntity color;
 
+  /// Плитка с цветом
   const ColorTile({super.key, required this.color});
 
   @override
   Widget build(BuildContext context) {
     final widgetModel = Provider.of<ColorsScreenWidgetModel>(context, listen: false);
     final theme = Theme.of(context);
+    final colorCode = color.getColor().value;
 
-    int colorCode;
-    try {
-      colorCode = int.parse('0xff${color.value?.replaceAll('#', '')}');
-    } catch (_) {
-      colorCode = int.parse('0xffffffff');
-    }
     return GestureDetector(
       onTap: () => widgetModel.navigateToColorPage(context, color),
-      onLongPress: () => widgetModel.copyColorToClipboard(context, color),
+      onLongPress: () => widgetModel.copyColorToClipboard(color),
       child: FittedBox(
         child: SizedBox(
           height: 140,
@@ -54,20 +52,7 @@ class ColorTile extends StatelessWidget {
                 Row(
                   children: [
                     Text(color.value ?? '', style: theme.textTheme.customCaption),
-                    StreamBuilder<ColorEntity?>(
-                        stream: widgetModel.hexInClipboardStream,
-                        builder: (context, snapshot) {
-                          final isCopied = widgetModel.hexInClipboard == color;
-                          if (isCopied) {
-                            return Icon(
-                              Icons.copy_sharp,
-                              color: theme.colorScheme.customIcons,
-                              size: 14,
-                            );
-                          } else {
-                            return const SizedBox();
-                          }
-                        }),
+                    CopiedIconWidget(targetColor: color, colorStream: widgetModel.hexInClipboardStream),
                   ],
                 )
               ],
