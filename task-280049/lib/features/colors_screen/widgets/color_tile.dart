@@ -51,7 +51,7 @@ class ColorTile extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(color.value ?? '', style: theme.textTheme.customCaption),
+                    Text(color.value, style: theme.textTheme.customCaption),
                     CopiedIconWidget(targetColor: color, colorStream: widgetModel.hexInClipboardStream),
                   ],
                 )

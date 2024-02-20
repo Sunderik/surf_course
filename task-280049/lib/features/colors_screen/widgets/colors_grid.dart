@@ -18,7 +18,7 @@ class ColorsGrid extends StatelessWidget {
         physics: const AlwaysScrollableScrollPhysics(),
         crossAxisCount: 3,
         mainAxisSpacing: 30,
-        children: [...colors.map((e) => ColorTile(color: e))],
+        children: colors.map((e) => ColorTile(color: e)).toList(),
       ),
     );
   }

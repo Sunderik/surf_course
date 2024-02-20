@@ -16,7 +16,7 @@ class ColorDetailsScreenView extends StatelessWidget {
 
     return StreamBuilder<ScreenStatusesEnum>(
         stream: widgetModel.screenStatusStream,
-        builder: (context, snapshot) {
+        builder: (_, __) {
           final status = widgetModel.screenStatus;
           if (status == ScreenStatusesEnum.wait) {
             return const _ColorDetailsView();

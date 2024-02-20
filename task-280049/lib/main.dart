@@ -15,7 +15,7 @@ Future<void> main() async {
   /// Запуск приложения (настраиваем главный стейт приложения поверх всего дерева виджетов)
   runApp(
     ChangeNotifierProvider(
-      create: (context) => injector.get<ColorsStateModel>(),
+      create: (_) => injector.get<ColorsStateModel>(),
       child: const MainApp(),
     ),
   );

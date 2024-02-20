@@ -19,7 +19,7 @@ class ColorsScreenView extends StatelessWidget {
       appBar: const ColorsScreenAppBar(),
       body: StreamBuilder<ScreenStatusesEnum>(
           stream: widgetModel.screenStatusStream,
-          builder: (context, snapshot) {
+          builder: (_, __) {
             final status = widgetModel.screenStatus;
 
             if (status == ScreenStatusesEnum.init) {
@@ -31,7 +31,7 @@ class ColorsScreenView extends StatelessWidget {
             } else if (status == ScreenStatusesEnum.wait) {
               return StreamBuilder<List<ColorEntity>>(
                   stream: widgetModel.colorsStream,
-                  builder: (context, snapshot) {
+                  builder: (_, __) {
                     final colors = widgetModel.colors;
                     return ColorsGrid(colors: colors);
                   });

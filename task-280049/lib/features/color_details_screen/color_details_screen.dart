@@ -15,10 +15,10 @@ class ColorDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ColorsStateModel>(builder: (context, colorState, child) {
+    return Consumer<ColorsStateModel>(builder: (_, colorState, child) {
       return Provider<ColorDetailsScreenWidgetModel>(
         create: (_) => ColorDetailsScreenWidgetModel(color: color, state: colorState)..init(),
-        dispose: (ctx, wm) => wm.dispose(),
+        dispose: (_, wm) => wm.dispose(),
         child: const ColorDetailsScreenView(),
       );
     });

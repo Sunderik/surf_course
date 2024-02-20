@@ -22,7 +22,7 @@ class ColorDetailsScreenWidgetModel extends BaseWidgetModel with SystemBarColorM
     super.init();
     _state.addListener(_stateListener);
     final value = color.value;
-    if (value != null && value.isNotEmpty) {
+    if (value.isNotEmpty) {
       screenStatus = ScreenStatusesEnum.wait;
       setSystemBarColor(color.getColor());
       final localHex = await getColorInClipboard();

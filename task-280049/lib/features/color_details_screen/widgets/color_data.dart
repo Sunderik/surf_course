@@ -36,7 +36,7 @@ class ColorData extends StatelessWidget {
               ),
             ],
           ),
-          if (color.value != null && color.value!.isNotEmpty) ...[
+          if (color.value.isNotEmpty) ...[
             _ColorHex(name: 'HEX', color: color, onTapFunc: widgetModel.copyColorToClipboard),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
@@ -96,7 +96,7 @@ class _ColorHex extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  color.value!.substring(1),
+                  color.value.substring(1),
                   style: theme.textTheme.customText,
                 ),
                 CopiedIconWidget(targetColor: color, colorStream: widgetModel.hexInClipboardStream),

@@ -70,7 +70,7 @@ abstract class BaseWidgetModel with ClipboardMixin {
   /// Копировать цвет [color] в системный буфер обмена
   @mustCallSuper
   Future<void> copyColorToClipboard(ColorEntity color) async {
-    await copyToClipboard(text: color.value ?? '');
+    await copyToClipboard(text: color.value);
     injector.get<INotificationService>().showSimpleNotification('Hex скопирован');
   }
 }

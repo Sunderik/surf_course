@@ -15,17 +15,16 @@ class ColorsScreenWidgetModel extends BaseWidgetModel {
   ColorsScreenWidgetModel({required ColorsStateModel state}) : _state = state;
 
   /// Список всех цветов
-  late List<ColorEntity> _colors;
+  List<ColorEntity> _colors = [];
 
   /// Контроллер патока  списка доступных цветов
-  late StreamController<List<ColorEntity>> _colorsController;
+  final StreamController<List<ColorEntity>> _colorsController = StreamController<List<ColorEntity>>.broadcast();
 
   /// Паток списка доступных цветов
   Stream<List<ColorEntity>> get colorsStream => _colorsController.stream;
 
   /// Селектор отсекающий пустые ццвета из списка всех цветов [_colors]
-  List<ColorEntity> get _colorsSelector =>
-      _state.colors.where((color) => color.value != null && color.value!.isNotEmpty).toList();
+  List<ColorEntity> get _colorsSelector => _state.colors.where((color) => color.value.isNotEmpty).toList();
 
   /// Список всех доступных цветов
   List<ColorEntity> get colors => _colorsSelector;
@@ -37,8 +36,7 @@ class ColorsScreenWidgetModel extends BaseWidgetModel {
   void init() {
     super.init();
     _state.addListener(_stateListener);
-    _colors = [];
-    _colorsController = StreamController<List<ColorEntity>>.broadcast();
+
     _checkColors();
   }
 
@@ -59,8 +57,8 @@ class ColorsScreenWidgetModel extends BaseWidgetModel {
   void navigateToColorPage(BuildContext context, ColorEntity color) {
     Navigator.of(context).push(
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => ColorDetailsScreen(color: color),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) => FadeTransition(
+        pageBuilder: (_, __, secondaryAnimation) => ColorDetailsScreen(color: color),
+        transitionsBuilder: (_, animation, secondaryAnimation, child) => FadeTransition(
           opacity: animation,
           child: child,
         ),
