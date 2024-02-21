@@ -2,13 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:task_280049/core/constants/constants.dart';
 import 'package:task_280049/core/logic/mappers/color_mapper.dart';
 import 'package:task_280049/core/logic/objects/dtos/color_dto.dart';
 import 'package:task_280049/core/logic/objects/entities/color_entity.dart';
 import 'package:task_280049/core/logic/services/file_service.dart';
-
-///Путь к файлу доступных для палитры цветов.
-const String _pathToColorFile = 'assets/colors.json';
 
 /// Интерфейс репозитория работы с цветами
 abstract class IColorsRepository {
@@ -29,7 +27,7 @@ class ColorsRepositoryImpl implements IColorsRepository {
 
   @override
   Future<List<ColorEntity>> fetchColors() async {
-    final stringData = await _fileService.loadJsonFileFromAssets(_pathToColorFile);
+    final stringData = await _fileService.loadJsonFileFromAssets(AppAssets.pathToColorFile);
 
     /// Выносим дессираилизацию в отдельный изволят .чтобы не повесить приложение, в случае большой палитры доступных цветов.
     return compute(_mapColorsDto, (_colorsMapper, stringData));

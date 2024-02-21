@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_280049/core/constants/constants.dart';
 import 'package:task_280049/core/library/widgets/copied_icon.dart';
 import 'package:task_280049/core/logic/objects/entities/color_entity.dart';
 import 'package:task_280049/core/theme/extensions/text_extension.dart';
@@ -37,18 +38,24 @@ class ColorData extends StatelessWidget {
             ],
           ),
           if (color.value.isNotEmpty) ...[
-            _ColorHex(name: 'HEX', color: color, onTapFunc: widgetModel.copyColorToClipboard),
+            _ColorHex(name: AppStrings.hexTitle, color: color, onTapFunc: widgetModel.copyColorToClipboard),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _ColorChannel(
-                      name: 'Red', value: color.getColor().red, onTapFunc: widgetModel.copyChannelToClipboard),
+                      name: AppStrings.redChannelTitle,
+                      value: color.getColor().red,
+                      onTapFunc: widgetModel.copyChannelToClipboard),
                   _ColorChannel(
-                      name: 'Green', value: color.getColor().green, onTapFunc: widgetModel.copyChannelToClipboard),
+                      name: AppStrings.greenChannelTitle,
+                      value: color.getColor().green,
+                      onTapFunc: widgetModel.copyChannelToClipboard),
                   _ColorChannel(
-                      name: 'Blue', value: color.getColor().blue, onTapFunc: widgetModel.copyChannelToClipboard),
+                      name: AppStrings.blueChannelTitle,
+                      value: color.getColor().blue,
+                      onTapFunc: widgetModel.copyChannelToClipboard),
                 ],
               ),
             ),
@@ -90,7 +97,7 @@ class _ColorHex extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'HEX',
+              name,
               style: theme.textTheme.customText,
             ),
             Row(
