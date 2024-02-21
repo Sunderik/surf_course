@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_280049/core/theme/color_constants.dart';
+import 'package:task_280049/core/constants/colors_constants.dart';
 
 const String _ubuntuFamily = 'Ubuntu';
 
@@ -9,7 +9,7 @@ extension CustomTextTheme on TextTheme {
     return const TextStyle(
       fontFamily: _ubuntuFamily,
       fontSize: 12.0,
-      color: customMain,
+      color: AppColors.customMain,
       fontWeight: FontWeight.w400,
     );
   }
@@ -18,7 +18,7 @@ extension CustomTextTheme on TextTheme {
     return const TextStyle(
       fontFamily: _ubuntuFamily,
       fontSize: 16.0,
-      color: customMain,
+      color: AppColors.customMain,
       fontWeight: FontWeight.w400,
     );
   }
@@ -36,7 +36,7 @@ extension CustomTextTheme on TextTheme {
     return const TextStyle(
       fontFamily: _ubuntuFamily,
       fontSize: 30.0,
-      color: customMain,
+      color: AppColors.customMain,
       fontWeight: FontWeight.w700,
     );
   }
