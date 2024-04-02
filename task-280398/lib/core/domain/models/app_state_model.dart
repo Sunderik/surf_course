@@ -17,9 +17,8 @@ class AppStateModel extends ChangeNotifier {
     final theme = _currentTheme;
     if (theme != null) {
       return theme;
-    } else {
-      throw Exception('Current theme is null!');
     }
+    throw Exception('Current theme is null!');
   }
 
   /// Установить тему [theme] как текущую тему приложения [_currentTheme]

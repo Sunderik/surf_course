@@ -23,18 +23,25 @@ class SharedPreferencesStorageService implements IStorageService {
   /// Записать значение [value] в хранилище по ключу [key].
   @override
   void set<T>(String key, T value) {
+    if (T is double) {
+      _prefs.setDouble(key, value as double);
+      return;
+    }
+    if (T is int) {
+      _prefs.setInt(key, value as int);
+      return;
+    }
+
+    if (T is bool) {
+      _prefs.setBool(key, value as bool);
+      return;
+    }
+
     if (T is Iterable) {
       _prefs.setStringList(key, (value as List).map((e) => e.toString()).toList());
-    } else if (T is bool) {
-      _prefs.setBool(key, value as bool);
-    } else if (T is num) {
-      if (T is int) {
-        _prefs.setInt(key, value as int);
-      } else if (T is double) {
-        _prefs.setDouble(key, value as double);
-      }
-    } else {
-      _prefs.setString(key, value.toString());
+      return;
     }
+
+    _prefs.setString(key, value.toString());
   }
 }
