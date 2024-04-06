@@ -11,10 +11,19 @@ dependencies:
   flutter:
     sdk: flutter
 
+  provider: ^6.0.2 # Пакет для создания архитектуры и сервис-сервис локатор
+  get_it: ^7.6.7 # Пакет построения DI для уменьшения связности слоев архитектуры
+  cached_network_image: ^3.3.1 # Пакет для кеширования изображений и облегчения нагрузки на сеть
+  http: ^1.2.1 # Пакет для сетевого взаимодействия
+  json_serializable: ^6.7.1 # Пакет для декодирования данных из сети
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.0 # Пакет соблюдения стилистики кода
+  build_runner: ^2.0.0 # Пакет кодогенерации
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/ # тут храниться логотип изображения
