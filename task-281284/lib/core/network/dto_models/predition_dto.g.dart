@@ -1,0 +1,17 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'predition_dto.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+PredictionDTO _$PredictionDTOFromJson(Map<String, dynamic> json) =>
+    PredictionDTO(
+      reading: json['reading'] as String,
+    );
+
+Map<String, dynamic> _$PredictionDTOToJson(PredictionDTO instance) =>
+    <String, dynamic>{
+      'reading': instance.reading,
+    };
