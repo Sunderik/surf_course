@@ -1,7 +1,9 @@
 import 'package:http/http.dart';
 
 /// базовая модель интерцептора
-mixin Interceptor {
+interface class Interceptor {
   /// Применить интерцептор к запросу [request]
-  BaseRequest intercept(BaseRequest request);
+  BaseRequest intercept(BaseRequest request) {
+    return request;
+  }
 }
