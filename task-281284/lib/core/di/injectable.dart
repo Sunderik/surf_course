@@ -4,8 +4,10 @@ import 'package:task_281284/core/logic/fortune_repository.dart';
 import 'package:task_281284/core/network/clients/dio_client.dart';
 import 'package:task_281284/core/network/clients/rest_client.dart';
 
+/// Экземпляр для доступа к зависимостям
 final injector = GetIt.instance;
 
+/// Сконфигурировать зависимости приложения
 Future<void> configureDependencyInjections() async {
   injector
     ..registerSingleton(DioClient.configure())

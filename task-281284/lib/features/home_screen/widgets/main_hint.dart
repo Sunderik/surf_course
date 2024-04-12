@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-const _mainTextFirstPart = 'Нажмите на шар';
-
-const _mainTextSecondPartForPhone = 'или потрясите телефон';
+import 'package:task_281284/core/constants/strings_constants.dart';
+import 'package:task_281284/core/theme/extensions/text_extensions.dart';
 
 /// Виджет центровки основного текста окна
 class MainHint extends StatelessWidget {
@@ -22,14 +20,14 @@ class _Text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? firstPart = _mainTextFirstPart;
-    String? secondPart = _mainTextSecondPartForPhone;
-
+    String? firstPart = StringsConstants.hintFirstPart;
+    String? secondPart = StringsConstants.hintSecondPart;
+    final hintTheme = Theme.of(context).textTheme.hintTheme;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(firstPart, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white54)),
-        Text(secondPart, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white54)),
+        Text(firstPart, style: hintTheme),
+        Text(secondPart, style: hintTheme),
       ],
     );
   }

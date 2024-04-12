@@ -1,1 +1,14 @@
-enum ScreenStatus { init, wait, loading, error }
+/// Перечисление статусов экрана
+enum ScreenStatusEnum {
+  /// Начальное состояние
+  init,
+
+  /// Состояние ожидания действий
+  wait,
+
+  /// Состояние загрузки
+  loading,
+
+  ///Состояние отображения ошибки
+  error,
+}

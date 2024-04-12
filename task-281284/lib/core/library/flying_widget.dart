@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:task_281284/core/library/fade_pade_route.dart';
-import 'package:task_281284/core/library/hero_item.dart';
+import 'package:task_281284/core/constants/durations_constants.dart';
 
-import '../../features/prediction_screen/prediction_scree.dart';
-
+/// Виджет оболочка анимации парения
 class FlyingWidget extends StatefulWidget {
+  /// Дочерний виджет который будет парить
   final Widget child;
 
-  const FlyingWidget({super.key, required this.child});
+  /// Обработчик нажатия на виджет
+  final VoidCallback onTap;
+
+  const FlyingWidget({super.key, required this.child, required this.onTap});
 
   @override
   State<FlyingWidget> createState() => _FlyingWidgetState();
 }
 
+/// Состояние виджета оболочка анимации парения
 class _FlyingWidgetState extends State<FlyingWidget> with SingleTickerProviderStateMixin {
+  /// Контроллер анимации парения
   late final AnimationController _controller = AnimationController(
     vsync: this,
-    duration: const Duration(seconds: 4),
+    duration: DurationConstants.extend,
   )..repeat(reverse: true);
+
+  /// Анимация парения
   late final Animation<Offset> _animation = Tween(begin: Offset.zero, end: const Offset(0, 0.15)).animate(_controller);
 
   @override
@@ -30,9 +36,7 @@ class _FlyingWidgetState extends State<FlyingWidget> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return SlideTransition(
       position: _animation,
-      child: GestureDetector(
-          onTap: () => Navigator.of(context).push(FadePageRoute(const PredictionScreen())),
-          child: HeroItem(child: widget.child)),
+      child: GestureDetector(onTap: widget.onTap, child: widget.child),
     );
   }
 }

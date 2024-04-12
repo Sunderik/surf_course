@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:task_281284/environments/environments.dart';
 
+/// Обработчик сериализация запросов и ответов в отдельном патоке.
 class _ComputeTransformer extends BackgroundTransformer {
   @override
   Future<String> transformRequest(RequestOptions options) async {
@@ -18,12 +20,14 @@ class _ComputeTransformer extends BackgroundTransformer {
   }
 }
 
+/// Клиент взаимодействия с сервером через пакет DIO
 class DioClient {
+  /// Сконфигурировать клиент на основе DIO пакета
   static Dio configure() {
     return Dio()
-      ..options.baseUrl = 'https://eightballapi.com/api'
-      ..options.connectTimeout = const Duration(seconds: 5)
-      ..options.receiveTimeout = const Duration(seconds: 3)
+      ..options.baseUrl = Environments.baseUrl
+      ..options.connectTimeout = const Duration(seconds: Environments.connectTimeout)
+      ..options.receiveTimeout = const Duration(seconds: Environments.receiveTimeout)
       ..transformer = _ComputeTransformer();
   }
 }

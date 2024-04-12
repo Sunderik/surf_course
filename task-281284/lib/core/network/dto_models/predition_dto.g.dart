@@ -9,9 +9,11 @@ part of 'predition_dto.dart';
 PredictionDTO _$PredictionDTOFromJson(Map<String, dynamic> json) =>
     PredictionDTO(
       reading: json['reading'] as String,
+      isErrorMessage: json['isErrorMessage'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$PredictionDTOToJson(PredictionDTO instance) =>
     <String, dynamic>{
       'reading': instance.reading,
+      'isErrorMessage': instance.isErrorMessage,
     };
