@@ -8,8 +8,14 @@ environment:
   flutter: 3.10.3 # Fixed Flutter version
 
 dependencies:
+  flutter_localizations:
+    sdk: flutter
   flutter:
     sdk: flutter
+
+  intl: ^0.18.0 # for DateTime
+  provider: ^6.0.2 # Пакет для создания архитектуры и сервис-сервис локатор
+
 
 dev_dependencies:
   flutter_test:
@@ -18,3 +24,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
