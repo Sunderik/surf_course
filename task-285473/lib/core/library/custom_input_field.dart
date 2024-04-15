@@ -44,15 +44,20 @@ class _CustomInputFieldState extends State<CustomInputField> {
   /// Локальный тип поля ввода
   late InputType _type;
 
+  ///Узел фокусировки в приложении
+  final FocusNode _focusNode = FocusNode();
+
   @override
   void initState() {
     _controller = widget.controller;
     _type = widget.inputType;
+    _focusNode.addListener(unfocusHandler);
     super.initState();
   }
 
   @override
   void dispose() {
+    _focusNode.dispose();
     _controller.clear();
     super.dispose();
   }
@@ -71,6 +76,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
               stream: wm.loadingStatusStream,
               builder: (_, __) {
                 return TextFormField(
+                  focusNode: _focusNode,
                   enabled: !wm.isLoading,
                   key: _formFieldKey,
                   controller: _controller,
@@ -97,16 +103,16 @@ class _CustomInputFieldState extends State<CustomInputField> {
                     });
                     return '';
                   },
-                  onChanged: (_) => _validate(),
-                  onFieldSubmitted: (value) {
-                    _controller.text = value.trim();
-                  },
                   onTap: onTap != null
                       ? () async {
                           await onTap(context, _controller);
                           _validate();
                         }
                       : null,
+                  onChanged: (_) => _validate(),
+                  onFieldSubmitted: (value) {
+                    _controller.text = value.trim();
+                  },
                 );
               }),
           isError
@@ -122,5 +128,15 @@ class _CustomInputFieldState extends State<CustomInputField> {
   /// Проверить значение в поле на соответствие условиям валидации для данного типа поля
   void _validate() {
     _formFieldKey.currentState!.validate();
+  }
+
+  /// Обработчик снятия фокуса с текстового поля
+  Future<void> unfocusHandler() async {
+    if (!_focusNode.hasFocus) {
+      // При отключенной кнопке, начинаем проверять форму целиком
+      if (wm.isDeactivated) {
+        wm.checkValidForm();
+      }
+    }
   }
 }

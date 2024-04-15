@@ -23,7 +23,7 @@ sealed class InputType {
   /// Тип используемой клавиатуры
   final TextInputType keyboardType;
 
-  /// Обработчик нажатия на поле ввода данных
+  /// Обработчик нажатия на поле вода
   final OnTapFunc? onTapFunc;
 
   InputType({
@@ -110,8 +110,10 @@ class DateType implements InputType {
   @override
   OnTapFunc get onTapFunc => _openDatePicker;
 
+  /// Метод открытия модального окна с календарем
   Future<void> _openDatePicker(BuildContext context, TextEditingController controller) async {
-    DateTime initDate = DateTime.now();
+    DateTime yesterday = DateTime.now().subtract(const Duration(days: 1));
+    DateTime initDate = yesterday;
     if (controller.text.isNotEmpty) {
       initDate = StringUtils.dateReformat(controller.text);
     }
@@ -119,7 +121,7 @@ class DateType implements InputType {
       context: context,
       initialDate: initDate,
       firstDate: DateTime(1900),
-      lastDate: DateTime.now(),
+      lastDate: yesterday,
     );
     if (newDate != null) {
       controller.text = StringUtils.dateFormat(newDate);
