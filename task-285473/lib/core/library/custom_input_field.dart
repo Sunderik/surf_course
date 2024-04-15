@@ -5,19 +5,21 @@ import 'package:task_285473/core/objects/input_type.dart';
 import 'package:task_285473/core/theme/text_extension.dart';
 import 'package:task_285473/features/registration_page/registration_page_widget_model.dart';
 
-typedef ValidationFunc = String? Function(String? value);
-typedef onTapFuncs = Future<void> Function(BuildContext context, TextEditingController controller);
-
+/// Виджет базового поля ввода данных
 class CustomInputField extends StatefulWidget {
-  ///Ключ формы к которой относится поле
+  /// Ключ формы к которой относится поле
   final GlobalKey<FormState> formKey;
+
+  /// Контроллер поля ввода
   final TextEditingController controller;
 
   /// Заголовок поля
   final String label;
 
+  /// Тип поля ввода
   final InputType inputType;
 
+  /// Базовое поле ввода данных
   const CustomInputField(
       {super.key, required this.formKey, required this.label, required this.inputType, required this.controller});
 
@@ -25,22 +27,27 @@ class CustomInputField extends StatefulWidget {
   State<CustomInputField> createState() => _CustomInputFieldState();
 }
 
+/// Состояние базового поля ввода данных
 class _CustomInputFieldState extends State<CustomInputField> {
+  /// Экземпляр бизнес-логики
   RegistrationPageWidgetModel get wm => Provider.of<RegistrationPageWidgetModel>(context, listen: false);
 
-  /// Признак что значение не соответствует условиям валидации
+  /// Признак того, что значение в поле не соответствует условиям валидации
   bool isError = false;
 
+  /// Локальный экземпляр контроллера поля ввода
   late TextEditingController _controller;
 
+  /// Ключ поля в форме
   final _formFieldKey = GlobalKey<FormFieldState>();
 
-  late InputType type;
+  /// Локальный тип поля ввода
+  late InputType _type;
 
   @override
   void initState() {
     _controller = widget.controller;
-    type = widget.inputType;
+    _type = widget.inputType;
     super.initState();
   }
 
@@ -53,9 +60,9 @@ class _CustomInputFieldState extends State<CustomInputField> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
-    final validator = type.validator;
+    final validator = _type.validator;
     final errorContentStyle = theme.inputContent.copyWith(color: ColorsConstants.appError);
-    final onTap = type.onFocusFunc;
+    final onTap = _type.onTapFunc;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
       child: Column(
@@ -67,8 +74,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
                   enabled: !wm.isLoading,
                   key: _formFieldKey,
                   controller: _controller,
-                  inputFormatters: type.formatters,
-                  keyboardType: type.keyboardType,
+                  inputFormatters: _type.formatters,
+                  keyboardType: _type.keyboardType,
                   style: isError ? errorContentStyle : theme.inputContent,
                   decoration: const InputDecoration().copyWith(
                     hintText: widget.label,
@@ -88,7 +95,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                     setState(() {
                       isError = true;
                     });
-                    return null;
+                    return '';
                   },
                   onChanged: (_) => _validate(),
                   onFieldSubmitted: (value) {
@@ -112,6 +119,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
     );
   }
 
+  /// Проверить значение в поле на соответствие условиям валидации для данного типа поля
   void _validate() {
     _formFieldKey.currentState!.validate();
   }

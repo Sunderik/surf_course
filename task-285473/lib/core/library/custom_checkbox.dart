@@ -7,30 +7,35 @@ import 'package:task_285473/core/objects/input_type.dart';
 import 'package:task_285473/core/theme/text_extension.dart';
 import 'package:task_285473/features/registration_page/registration_page_widget_model.dart';
 
-///
+/// Виджет базового чекбокса
 class CustomCheckBox extends StatefulWidget {
-  ///
+  /// Заголовок чекбокса
   final String title;
 
-  ///
-  final bool checked;
+  /// Состояние чекбокса
+  final bool isSelected;
 
-  ///
+  /// Контроллер для появляющегося поля ввода данных
   final TextEditingController controller;
 
-  const CustomCheckBox({super.key, this.checked = false, required this.title, required this.controller});
+  /// Базовый чекбокс
+  const CustomCheckBox({super.key, this.isSelected = false, required this.title, required this.controller});
 
   @override
   State<CustomCheckBox> createState() => _CustomCheckBoxState();
 }
 
+/// Состояние базового чекбокса
 class _CustomCheckBoxState extends State<CustomCheckBox> {
+  /// Экземпляр бизнес-логики
   RegistrationPageWidgetModel get wm => Provider.of<RegistrationPageWidgetModel>(context, listen: false);
+
+  /// Локальное состояние виджета
   late bool _isChecked;
 
   @override
   void initState() {
-    _isChecked = widget.checked;
+    _isChecked = widget.isSelected;
     super.initState();
   }
 
@@ -43,7 +48,7 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
             final loading = wm.isLoading;
             return GestureDetector(
               behavior: HitTestBehavior.opaque,
-              onTap: loading ? null : () => _change(!_isChecked),
+              onTap: loading ? null : () => _changeState(!_isChecked),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -59,7 +64,7 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
                           )
                         : null,
                     value: _isChecked,
-                    onChanged: loading ? null : (value) => _change(value ?? false),
+                    onChanged: loading ? null : (value) => _changeState(value ?? false),
                   ),
                   Flexible(child: Text(widget.title, style: Theme.of(context).textTheme.radioTitle)),
                 ],
@@ -80,7 +85,8 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
     ]);
   }
 
-  _change(bool val) {
+  /// Изменить состояние виджета
+  _changeState(bool val) {
     setState(() {
       _isChecked = val;
     });

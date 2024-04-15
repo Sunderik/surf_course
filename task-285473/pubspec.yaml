@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  intl: ^0.18.0 # for DateTime
+  intl: ^0.18.0 # для форматирования типа DateTime
   provider: ^6.0.2 # Пакет для создания архитектуры и сервис-сервис локатор
 
 
@@ -27,3 +27,10 @@ flutter:
 
   assets:
     - assets/
+
+  fonts:
+    - family: SF Pro Display # шрифт используемый в примере в Figma
+      fonts:
+        - asset: fonts/SF-Pro-Display/SF-Pro-Display-Regular.otf
+          style: normal
+

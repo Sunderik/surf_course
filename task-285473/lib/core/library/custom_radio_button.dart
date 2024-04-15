@@ -5,25 +5,31 @@ import 'package:task_285473/core/objects/pets_enum.dart';
 import 'package:task_285473/core/theme/text_extension.dart';
 import 'package:task_285473/features/registration_page/registration_page_widget_model.dart';
 
+/// Значение размера сторон кнопки
 const double _sizeContainer = 72;
 
-class PetRadioOption<T> extends StatelessWidget {
+/// Виджет радио кнопки типа животного
+class PetRadioOption extends StatelessWidget {
+  /// Текущее значение группы, к которой относится радио кнопка
   final int? groupValue;
+
+  /// Тип животного относящийся к радио кнопке
   final Pets pet;
 
-  final ValueChanged<int> onChanged;
+  /// Обработчик события нажатия на радиокнопку
+  final ValueChanged<int> onTap;
 
+  ///Радио кнопка типа животного
   const PetRadioOption({
     super.key,
     required this.groupValue,
     required this.pet,
-    required this.onChanged,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final wm = Provider.of<RegistrationPageWidgetModel>(context, listen: false);
-
     final bool isSelected = pet.index == groupValue;
     final Color color = isSelected ? Theme.of(context).primaryColor : ColorsConstants.appWhite;
     return StreamBuilder<bool>(
@@ -33,7 +39,7 @@ class PetRadioOption<T> extends StatelessWidget {
           return Container(
             margin: const EdgeInsets.all(5),
             child: InkWell(
-              onTap: loading ? null : () => onChanged(pet.index),
+              onTap: loading ? null : () => onTap(pet.index),
               splashColor: Colors.transparent,
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,

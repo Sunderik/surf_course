@@ -4,8 +4,9 @@ import 'package:task_285473/core/theme/text_extension.dart';
 
 const double _radius = 12;
 
-/// Расширение для темы приподнятых кнопок
+/// Расширение для темы поля ввода
 extension InputDecorationExtension on InputDecorationTheme {
+  /// Базовая тема поля вода в приложении
   static InputDecorationTheme get baseTheme => InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
@@ -39,6 +40,7 @@ extension InputDecorationExtension on InputDecorationTheme {
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         floatingLabelStyle: CustomTextTheme.inputTitle,
         labelStyle: CustomTextTheme.inputHint,
+        errorStyle: CustomTextTheme.inputTransparentError,
         errorMaxLines: 1,
         isDense: true,
       ); // Us

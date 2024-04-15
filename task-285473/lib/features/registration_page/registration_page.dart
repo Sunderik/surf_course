@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:task_285473/features/registration_page/registration_page_view.dart';
 import 'package:task_285473/features/registration_page/registration_page_widget_model.dart';
 
+/// Виджет обертка страницы формы регистрации животного
 class RegistrationPage extends StatelessWidget {
+  /// Обертка страницы формы регистрации животного
   const RegistrationPage({super.key});
 
   @override

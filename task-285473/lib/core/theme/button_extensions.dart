@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_285473/core/constants/colors_constants.dart';
 
-/// Расширение для темы приподнятых кнопок
+/// Расширение для темы  кнопок
 extension ElevatedButtonsExtension on ElevatedButtonThemeData {
   /// Тема основной приподнятой кнопки
   ElevatedButtonThemeData get mainButton => ElevatedButtonThemeData(
@@ -27,9 +27,9 @@ extension ElevatedButtonsExtension on ElevatedButtonThemeData {
       ));
 }
 
-/// Расширение для темы приподнятых кнопок
+/// Расширение для темы чекбоксов
 extension CheckboxExtension on CheckboxThemeData {
-  /// Тема основной приподнятой кнопки
+  /// Тема основного чекбокса
   static CheckboxThemeData get mainCheckbox => CheckboxThemeData(
         fillColor: MaterialStateProperty.resolveWith<Color?>(
           (Set<MaterialState> states) {

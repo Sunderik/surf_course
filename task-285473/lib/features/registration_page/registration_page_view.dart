@@ -4,7 +4,9 @@ import 'package:task_285473/features/registration_page/registration_page_widget_
 import 'package:task_285473/features/registration_page/widgets/registration_form.dart';
 import 'package:task_285473/features/registration_page/widgets/send_button.dart';
 
+/// Виджет обертка страницы формы регистрации животного
 class RegistrationPageView extends StatelessWidget {
+  /// Обертка страницы формы регистрации животного
   const RegistrationPageView({super.key});
 
   @override
@@ -24,7 +26,7 @@ class RegistrationPageView extends StatelessWidget {
               StreamBuilder<bool>(
                   stream: wm.loadingStatusStream,
                   builder: (_, __) {
-                    return SendButton(callback: wm.sendData, showLoader: wm.isLoading);
+                    return SendButton(callback: wm.sendData, isLoading: wm.isLoading);
                   }),
             ],
           ),

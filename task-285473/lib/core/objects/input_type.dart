@@ -3,35 +3,39 @@ import 'package:flutter/services.dart';
 import 'package:task_285473/core/constants/strings_constants.dart';
 import 'package:task_285473/core/utils/string_utils.dart';
 
+/// Тип функции для валидации данных, где [value] - значение, которое проверяется.
 typedef ValidationFunc = String? Function(String? value);
-typedef onTapFunc = Future<void> Function(BuildContext context, TextEditingController controller);
 
-///
+/// Тип функции для обработки нажатия на поле вода
+typedef OnTapFunc = Future<void> Function(BuildContext context, TextEditingController controller);
+
+/// Базовый класс типа ввода данных
 sealed class InputType {
-  ///
+  /// Валидатор данных
   final ValidationFunc validator;
 
-  ///
+  /// Базовое сообщение об ошибке валидации
   final String errorMsg;
 
-  ///
+  /// Форматировщики для поля ввода данных
   final List<TextInputFormatter>? formatters;
 
-  ///
+  /// Тип используемой клавиатуры
   final TextInputType keyboardType;
 
-  ///
-  final onTapFunc? onFocusFunc;
+  /// Обработчик нажатия на поле ввода данных
+  final OnTapFunc? onTapFunc;
 
   InputType({
     required this.validator,
     required this.errorMsg,
     required this.keyboardType,
     required this.formatters,
-    this.onFocusFunc,
+    this.onTapFunc,
   });
 }
 
+/// Класс типа ввода текстовых данных
 class TextType implements InputType {
   @override
   String get errorMsg => StringsConstants.nameInputError;
@@ -46,8 +50,9 @@ class TextType implements InputType {
   ValidationFunc get validator => _textValidator;
 
   @override
-  onTapFunc? get onFocusFunc => null;
+  OnTapFunc? get onTapFunc => null;
 
+  /// Валидатор текстовых данных
   String? _textValidator(String? val) {
     if (val == null || val.isEmpty) {
       return errorMsg;
@@ -59,7 +64,8 @@ class TextType implements InputType {
   }
 }
 
-class NumberType implements InputType {
+/// Класс типа ввода целочисленных данных
+class IntegerType implements InputType {
   @override
   String get errorMsg => StringsConstants.weightInputError;
 
@@ -70,12 +76,13 @@ class NumberType implements InputType {
   TextInputType get keyboardType => TextInputType.number;
 
   @override
-  ValidationFunc get validator => _numberValidator;
+  ValidationFunc get validator => _integerValidator;
 
   @override
-  onTapFunc? get onFocusFunc => null;
+  OnTapFunc? get onTapFunc => null;
 
-  String? _numberValidator(String? val) {
+  /// Валидатор целочисленных данных
+  String? _integerValidator(String? val) {
     if (val == null || val.isEmpty) {
       return errorMsg;
     }
@@ -86,6 +93,7 @@ class NumberType implements InputType {
   }
 }
 
+/// Класс типа ввода временных данных
 class DateType implements InputType {
   @override
   String get errorMsg => StringsConstants.birthdayInputError;
@@ -100,7 +108,7 @@ class DateType implements InputType {
   ValidationFunc get validator => _dateValidator;
 
   @override
-  onTapFunc get onFocusFunc => _openDatePicker;
+  OnTapFunc get onTapFunc => _openDatePicker;
 
   Future<void> _openDatePicker(BuildContext context, TextEditingController controller) async {
     DateTime initDate = DateTime.now();
@@ -118,6 +126,7 @@ class DateType implements InputType {
     }
   }
 
+  /// Валидатор временных данных
   String? _dateValidator(String? val) {
     if (val == null || val.isEmpty) {
       return errorMsg;
@@ -129,6 +138,7 @@ class DateType implements InputType {
   }
 }
 
+/// Класс типа ввода почты
 class EmailType implements InputType {
   @override
   String get errorMsg => StringsConstants.emailInputHint;
@@ -143,13 +153,14 @@ class EmailType implements InputType {
   ValidationFunc get validator => _emailValidator;
 
   @override
-  onTapFunc? get onFocusFunc => null;
+  OnTapFunc? get onTapFunc => null;
 
+  /// Валидатор ввода почты
   String? _emailValidator(String? val) {
     if (val == null || val.isEmpty) {
       return errorMsg;
     }
-    if (!StringUtils.email.hasMatch(val)) {
+    if (!StringUtils.emailFormat.hasMatch(val)) {
       return errorMsg;
     }
     return null;

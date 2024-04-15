@@ -94,4 +94,12 @@ extension CustomTextTheme on TextTheme {
       fontWeight: FontWeight.w400,
     );
   }
+
+  /// Шрифт скрытой ошибки валидации поля ввода
+  static TextStyle get inputTransparentError {
+    return const TextStyle(
+      color: Colors.transparent,
+      fontSize: 0,
+    );
+  }
 }
