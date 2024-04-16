@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shake/shake.dart';
+import 'package:task_281284/core/constants/assets_paths.dart';
 import 'package:task_281284/core/constants/colors_constants.dart';
-import 'package:task_281284/core/constants/strings_constants.dart';
 import 'package:task_281284/core/library/flying_widget.dart';
 import 'package:task_281284/core/library/scaled_widget.dart';
 import 'package:task_281284/features/home_screen/home_screen_widget_model.dart';
@@ -22,15 +22,15 @@ class HomeScreenView extends StatefulWidget {
 /// Состояние виджета домашнего окна
 class _HomeScreenViewState extends State<HomeScreenView> {
   /// Объект логики окна
-  HomeScreenWidgetModel get wm => Provider.of<HomeScreenWidgetModel>(context, listen: false);
+  HomeScreenWidgetModel get wm => context.read<HomeScreenWidgetModel>();
 
   /// Объект отслеживания встряски
   late ShakeDetector detector;
 
   @override
   void initState() {
-    detector = ShakeDetector.waitForStart(onPhoneShake: wm.getPrediction)..startListening();
     super.initState();
+    detector = ShakeDetector.waitForStart(onPhoneShake: wm.getPrediction)..startListening();
   }
 
   @override
@@ -57,7 +57,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
                   Padding(
                     padding: const EdgeInsets.only(top: 40.0),
                     child: ScaledWidget(
-                      child: Image.asset(StringsConstants.ballShadowAssetPath),
+                      child: Image.asset(AssetsPaths.ballShadowAssetPath),
                     ),
                   ),
                 ],

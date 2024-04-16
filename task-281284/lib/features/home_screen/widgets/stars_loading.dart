@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_281284/core/constants/strings_constants.dart';
+import 'package:task_281284/core/constants/assets_paths.dart';
 
 /// Виджет отображения звезд на шаре предсказания
 class StarsLoading extends StatelessWidget {
@@ -10,7 +10,7 @@ class StarsLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CircleAvatar(
       backgroundColor: Colors.transparent,
-      backgroundImage: AssetImage(StringsConstants.ballStarsAssetPath),
+      backgroundImage: AssetImage(AssetsPaths.ballStarsAssetPath),
     );
   }
 }

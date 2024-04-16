@@ -28,8 +28,8 @@ class _FlyingWidgetState extends State<FlyingWidget> with SingleTickerProviderSt
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override
