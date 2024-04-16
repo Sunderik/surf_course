@@ -35,8 +35,8 @@ sealed class InputType {
   });
 }
 
-/// Класс типа ввода текстовых данных
-class TextType implements InputType {
+/// Класс типа ввода имени
+class NameType implements InputType {
   @override
   String get errorMsg => StringsConstants.nameInputError;
 
@@ -47,13 +47,13 @@ class TextType implements InputType {
   TextInputType get keyboardType => TextInputType.name;
 
   @override
-  ValidationFunc get validator => _textValidator;
+  ValidationFunc get validator => _nameValidator;
 
   @override
   OnTapFunc? get onTapFunc => null;
 
-  /// Валидатор текстовых данных
-  String? _textValidator(String? val) {
+  /// Валидатор имени
+  String? _nameValidator(String? val) {
     if (val == null || val.isEmpty) {
       return errorMsg;
     }
@@ -64,8 +64,8 @@ class TextType implements InputType {
   }
 }
 
-/// Класс типа ввода целочисленных данных
-class IntegerType implements InputType {
+/// Класс типа ввода веса
+class WeightType implements InputType {
   @override
   String get errorMsg => StringsConstants.weightInputError;
 
@@ -76,13 +76,13 @@ class IntegerType implements InputType {
   TextInputType get keyboardType => TextInputType.number;
 
   @override
-  ValidationFunc get validator => _integerValidator;
+  ValidationFunc get validator => _weightValidator;
 
   @override
   OnTapFunc? get onTapFunc => null;
 
-  /// Валидатор целочисленных данных
-  String? _integerValidator(String? val) {
+  /// Валидатор веса
+  String? _weightValidator(String? val) {
     if (val == null || val.isEmpty) {
       return errorMsg;
     }

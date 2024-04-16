@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_285473/core/core.dart';
 import 'package:task_285473/features/registration_page/registration_page_widget_model.dart';
-import 'package:task_285473/features/registration_page/widgets/form_sections.dart';
+import 'package:task_285473/features/registration_page/widgets/form_sections/fields_sections.dart';
+import 'package:task_285473/features/registration_page/widgets/form_sections/pet_types_sections.dart';
+import 'package:task_285473/features/registration_page/widgets/form_sections/vaccinations_section.dart';
 
 /// Виджет формы регистрации животного
 class RegistrationForm extends StatefulWidget {
@@ -15,11 +17,10 @@ class RegistrationForm extends StatefulWidget {
 
 /// Состояние виджета формы регистрации
 class _RegistrationFormState extends State<RegistrationForm> {
-  RegistrationPageWidgetModel get wm => Provider.of<RegistrationPageWidgetModel>(context, listen: false);
+  RegistrationPageWidgetModel get wm => context.read<RegistrationPageWidgetModel>();
 
   @override
   Widget build(BuildContext context) {
-    final wm = Provider.of<RegistrationPageWidgetModel>(context, listen: false);
     return Form(
       key: wm.formKey,
       child: Column(
