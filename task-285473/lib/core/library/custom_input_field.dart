@@ -30,7 +30,7 @@ class CustomInputField extends StatefulWidget {
 /// Состояние базового поля ввода данных
 class _CustomInputFieldState extends State<CustomInputField> {
   /// Экземпляр бизнес-логики
-  RegistrationPageWidgetModel get wm => Provider.of<RegistrationPageWidgetModel>(context, listen: false);
+  RegistrationPageWidgetModel get wm => context.read<RegistrationPageWidgetModel>();
 
   /// Признак того, что значение в поле не соответствует условиям валидации
   bool isError = false;
@@ -49,10 +49,10 @@ class _CustomInputFieldState extends State<CustomInputField> {
 
   @override
   void initState() {
+    super.initState();
     _controller = widget.controller;
     _type = widget.inputType;
     _focusNode.addListener(unfocusHandler);
-    super.initState();
   }
 
   @override

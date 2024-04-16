@@ -1,18 +1,19 @@
+import 'package:task_285473/core/constants/assets_paths.dart';
 import 'package:task_285473/core/constants/strings_constants.dart';
 
 /// Перечисление доступных типов животных
 enum Pets {
   /// Собака
-  doge(StringsConstants.dog, StringsConstants.dogAssetPath, true),
+  doge(StringsConstants.dog, AssetsPaths.dogAssetPath, true),
 
   /// Кошка
-  cat(StringsConstants.cat, StringsConstants.catAssetPath, true),
+  cat(StringsConstants.cat, AssetsPaths.catAssetPath, true),
 
   /// Попугай
-  parrot(StringsConstants.parrot, StringsConstants.parrotAssetPath, false),
+  parrot(StringsConstants.parrot, AssetsPaths.parrotAssetPath, false),
 
   /// Хомяк
-  hamster(StringsConstants.hamster, StringsConstants.hamsterAssetPath, false);
+  hamster(StringsConstants.hamster, AssetsPaths.hamsterAssetPath, false);
 
   /// Название типа
   final String label;

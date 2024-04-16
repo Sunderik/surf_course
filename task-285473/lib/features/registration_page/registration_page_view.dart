@@ -11,7 +11,7 @@ class RegistrationPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final wm = Provider.of<RegistrationPageWidgetModel>(context, listen: false);
+    final wm = context.read<RegistrationPageWidgetModel>();
     return SafeArea(
       child: Scaffold(
         body: Center(

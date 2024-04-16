@@ -29,7 +29,7 @@ class PetRadioOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final wm = Provider.of<RegistrationPageWidgetModel>(context, listen: false);
+    final wm = context.read<RegistrationPageWidgetModel>();
     final bool isSelected = pet.index == groupValue;
     final Color color = isSelected ? Theme.of(context).primaryColor : ColorsConstants.appWhite;
     return StreamBuilder<bool>(

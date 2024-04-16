@@ -28,15 +28,15 @@ class CustomCheckBox extends StatefulWidget {
 /// Состояние базового чекбокса
 class _CustomCheckBoxState extends State<CustomCheckBox> {
   /// Экземпляр бизнес-логики
-  RegistrationPageWidgetModel get wm => Provider.of<RegistrationPageWidgetModel>(context, listen: false);
+  RegistrationPageWidgetModel get wm => context.read<RegistrationPageWidgetModel>();
 
   /// Локальное состояние виджета
   late bool _isChecked;
 
   @override
   void initState() {
-    _isChecked = widget.isSelected;
     super.initState();
+    _isChecked = widget.isSelected;
   }
 
   @override
