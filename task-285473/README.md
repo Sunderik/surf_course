@@ -1,23 +1,37 @@
 # Description of your result
 
-You can describe your results in any language that is convenient for you, not just English.
+Выполнение здания ```Валидация формы```
 
 ## Description
 
-[Describe what you have done]
+В рамках задания создано приложение для отображения страницы формы регистрации нового животного со своей логикой поведения ,
+Логика поведения формы сделана согласно ТЗ.
+
+Все приложение создано согласно принципам чистой архитектуры и SOlID.
+
+ 
+
+В рамках задания выполнены все поставленные условия, так же дополнительно отрефакторен код, и покрыт документированием.
+
 
 ## How to
 
-[Describe how to run your application if there are any issues]
+Для запуска приложения в среде отладки нужно выполнить следующую последовательность действий:
+
+- Открыть консоль в корневой директории приложения
+- Вызвать команду `flutter pub get`, для подтягивания связанных пакетов
+- После завершения обновления пакетов можно запускать приложение обычным способом через flutter run/debug, либо сделать
+  apk файл.
 
 ## Problems
 
-[Describe the problems you encountered]
+Вроде не возникло
 
 ## More
 
-[Here you can brag about what you managed to implement or do something beyond the task]
+Информация отсутствует
 
 ## Demo
 
-[Leave links to screencasts/screenshots here, you can use a GitHub repository or a separate cloud service]
+В проект добавил каталог ```results``, в котором разместил короткое видео с презентацией работы проекта и
+изображения.
