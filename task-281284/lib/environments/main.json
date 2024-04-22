@@ -1,0 +1,5 @@
+{
+  "base_url": "https://eightballapi.com/api",
+  "connection_timeout": 3,
+  "receive_timeout": 5
+}
